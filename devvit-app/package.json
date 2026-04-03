@@ -1,6 +1,6 @@
 {
-  "name": "ircc-processing-times",
-  "version": "0.0.1",
+  "name": "processing-time",
+  "version": "0.0.0",
   "type": "module",
   "private": true,
   "license": "BSD-3-Clause",

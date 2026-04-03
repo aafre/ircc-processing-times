@@ -1,2 +1,7 @@
-name: ircc-processing-times
+name: processing-time
 version: 0.0.1
+
+net:
+  httpFetch:
+    - raw.githubusercontent.com
+    - flagcdn.com

@@ -3,7 +3,9 @@ import { Devvit, useState, useAsync } from '@devvit/public-api';
 Devvit.configure({
   redditAPI: true,
   redis: true,
-  http: true,
+  http: {
+    domains: ['raw.githubusercontent.com', 'flagcdn.com'],
+  },
 });
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -156,6 +158,18 @@ const timelineForm = Devvit.createForm(
   }
 );
 
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+const FLAG_URL = 'https://flagcdn.com/w40';
+
+const getSpeedColor = (days: number | null | undefined): string => {
+  if (typeof days !== 'number') return '#787C7E';
+  if (days <= 14) return '#46D160';
+  if (days <= 30) return '#0079D3';
+  if (days <= 60) return '#FF8C00';
+  return '#FF4500';
+};
+
 // ─── Custom Post Type: Dashboard ──────────────────────────────────────────────
 
 Devvit.addCustomPostType({
@@ -165,238 +179,98 @@ Devvit.addCustomPostType({
   render: (context) => {
     const [visaFilter, setVisaFilter] = useState('visitor-outside-canada');
     const [page, setPage] = useState(0);
-    const [view, setView] = useState<string>('priority');
 
-    // Fetch data from Redis
     const { data: rawData, loading } = useAsync(async () => {
       const raw = await context.redis.get(REDIS_KEY_DATA);
       if (!raw) return null;
       return raw;
     });
 
-    const { data: rawCount } = useAsync(async () => {
-      const count = await context.redis.get('timeline_count:all');
-      return count ?? '0';
-    });
-
-    const timelineCount = parseInt((rawCount as string) || '0', 10);
-
-    // ── Loading state ──
     if (loading) {
       return (
-        <vstack height="100%" alignment="middle center" padding="large">
-          <text size="large" weight="bold">
-            Loading processing times...
-          </text>
+        <vstack height="100%" alignment="middle center">
+          <text size="medium" weight="bold">Loading...</text>
         </vstack>
       );
     }
 
-    // ── No data state ──
     if (!rawData) {
       return (
         <vstack height="100%" alignment="middle center" padding="large" gap="medium">
-          <text size="large" weight="bold">
-            No data available yet
-          </text>
-          <text size="medium" color="neutral-content-weak">
-            Processing times will appear after the first data sync.
-          </text>
-          <text size="small" color="neutral-content-weak">
-            Moderators: data fetches automatically once daily.
-          </text>
+          <text size="large" weight="bold">No data yet</text>
+          <text size="small" color="#787C7E">Use ··· menu → Load Sample Processing Times</text>
         </vstack>
       );
     }
 
-    // Parse the stored JSON
     const data = JSON.parse(rawData as string) as {
-      last_updated: string;
       ircc_last_updated: string;
-      processing_times: Record<
-        string,
-        { name: string; raw: Record<string, string>; [k: string]: unknown }
-      >;
+      processing_times: Record<string, { name: string; raw: Record<string, string>; [k: string]: unknown }>;
     };
 
-    // ── Prepare country list ──
-    const allEntries = Object.entries(data.processing_times);
+    const entries = Object.entries(data.processing_times)
+      .filter(([_, c]) => typeof c[visaFilter] === 'number')
+      .sort((a, b) => (a[1].name || a[0]).localeCompare(b[1].name || b[0]));
 
-    const filtered = allEntries.filter(([_code, c]) => {
-      const val = c[visaFilter];
-      return val !== null && val !== undefined && typeof val === 'number';
-    });
-
-    const sorted = filtered.sort((a, b) => {
-      if (view === 'priority') {
-        const aIdx = PRIORITY_COUNTRIES.indexOf(a[0]);
-        const bIdx = PRIORITY_COUNTRIES.indexOf(b[0]);
-        if (aIdx !== -1 && bIdx !== -1) return aIdx - bIdx;
-        if (aIdx !== -1) return -1;
-        if (bIdx !== -1) return 1;
-      }
-      return (a[1].name || a[0]).localeCompare(b[1].name || b[0]);
-    });
-
-    const displayList =
-      view === 'priority'
-        ? sorted.filter(([code]) => PRIORITY_COUNTRIES.includes(code))
-        : sorted;
-
-    const totalPages = Math.max(1, Math.ceil(displayList.length / PAGE_SIZE));
-    const currentPage = Math.min(page, totalPages - 1);
-    const pageItems = displayList.slice(
-      currentPage * PAGE_SIZE,
-      (currentPage + 1) * PAGE_SIZE
-    );
-
-    // ── Helpers ──
-    const getDaysColor = (days: unknown): string => {
-      if (typeof days !== 'number') return 'neutral-content-weak';
-      if (days <= 21) return '';
-      if (days <= 60) return 'caution-plain';
-      return 'danger-plain';
-    };
+    const perPage = 7;
+    const totalPages = Math.max(1, Math.ceil(entries.length / perPage));
+    const pg = Math.min(page, totalPages - 1);
+    const rows = entries.slice(pg * perPage, (pg + 1) * perPage);
 
     return (
-      <vstack height="100%" padding="medium" gap="small">
+      <vstack height="100%">
         {/* Header */}
-        <hstack alignment="middle" gap="small">
-          <text size="large" weight="bold">
-            IRCC Processing Times
-          </text>
+        <hstack padding="medium" alignment="middle">
+          <text weight="bold" size="large">🇨🇦 Processing Times</text>
           <spacer />
-          <text size="xsmall" color="neutral-content-weak">
-            {data.ircc_last_updated || ''}
-          </text>
+          <hstack backgroundColor="#1A7F37" cornerRadius="full" padding="small" gap="small" alignment="middle">
+            <text size="xsmall" weight="bold" color="#46D160">●</text>
+            <text size="xsmall" weight="bold" color="#FFFFFF">LIVE</text>
+          </hstack>
         </hstack>
 
-        {/* Visa type filter */}
-        <hstack gap="small">
+        {/* Filters */}
+        <hstack padding="small" gap="small" alignment="middle">
           {VISA_KEYS.map((key) => (
-            <button
-              key={key}
-              size="small"
-              appearance={visaFilter === key ? 'primary' : 'bordered'}
-              onPress={() => {
-                setVisaFilter(key);
-                setPage(0);
-              }}
-            >
+            <button key={key} size="small" appearance={visaFilter === key ? 'primary' : 'bordered'}
+              onPress={() => { setVisaFilter(key); setPage(0); }}>
               {VISA_LABELS[key]}
             </button>
           ))}
-        </hstack>
-
-        {/* View toggle + submit */}
-        <hstack gap="small" alignment="middle">
-          <button
-            size="small"
-            appearance={view === 'priority' ? 'primary' : 'bordered'}
-            onPress={() => {
-              setView('priority');
-              setPage(0);
-            }}
-          >
-            Top 10
-          </button>
-          <button
-            size="small"
-            appearance={view === 'all' ? 'primary' : 'bordered'}
-            onPress={() => {
-              setView('all');
-              setPage(0);
-            }}
-          >
-            All ({filtered.length})
-          </button>
           <spacer />
-          <button
-            size="small"
-            appearance="bordered"
-            icon="add"
-            onPress={() => context.ui.showForm(timelineForm)}
-          >
-            My Timeline
+          <button size="small" appearance="bordered" icon="calendar" onPress={() => context.ui.showForm(timelineForm)}>
+            Share
           </button>
         </hstack>
 
-        {/* Column headers */}
-        <hstack padding="small" gap="medium">
-          <text size="xsmall" weight="bold" color="neutral-content-weak" grow>
-            COUNTRY
-          </text>
-          <text
-            size="xsmall"
-            weight="bold"
-            color="neutral-content-weak"
-            alignment="end"
-          >
-            PROCESSING TIME
-          </text>
-        </hstack>
-
-        {/* Country rows */}
-        <vstack gap="small" grow>
-          {pageItems.map(([code, country]) => {
-            const days = country[visaFilter] as number | null;
-            const rawText = country.raw?.[visaFilter] || '—';
+        {/* Rows */}
+        <vstack grow padding="small" gap="small">
+          {rows.map(([code, country], idx) => {
+            const days = country[visaFilter] as number;
             return (
-              <hstack
-                key={code}
-                padding="small"
-                gap="medium"
-                backgroundColor="neutral-background-hover"
-                cornerRadius="small"
-                alignment="middle"
-              >
-                <vstack grow>
-                  <text size="medium" weight="bold">
-                    {country.name || code}
-                  </text>
-                </vstack>
-                <vstack alignment="end">
-                  <text size="xlarge" weight="bold" color={getDaysColor(days)}>
-                    {typeof days === 'number' ? `${days}d` : '—'}
-                  </text>
-                  <text size="xsmall" color="neutral-content-weak">
-                    {rawText}
-                  </text>
-                </vstack>
+              <hstack key={code} padding="small" gap="medium" backgroundColor="secondary-background" cornerRadius="medium" alignment="middle">
+                <text size="small" color="#787C7E">{pg * perPage + idx + 1}</text>
+                <text size="medium" weight="bold" grow>{country.name || code}</text>
+                <text size="large" weight="bold" color={getSpeedColor(days)}>{days}</text>
+                <text size="xsmall" color="#787C7E">days</text>
               </hstack>
             );
           })}
         </vstack>
 
-        {/* Pagination + stats footer */}
-        <hstack alignment="middle" gap="small" padding="small">
-          {view === 'all' && totalPages > 1 ? (
-            <hstack gap="small" alignment="middle">
-              <button
-                size="small"
-                appearance="bordered"
-                disabled={currentPage === 0}
-                onPress={() => setPage(Math.max(0, currentPage - 1))}
-                icon="caret-left"
-              />
-              <text size="xsmall" color="neutral-content-weak">
-                {currentPage + 1} / {totalPages}
-              </text>
-              <button
-                size="small"
-                appearance="bordered"
-                disabled={currentPage >= totalPages - 1}
-                onPress={() => setPage(Math.min(totalPages - 1, currentPage + 1))}
-                icon="caret-right"
-              />
-            </hstack>
-          ) : (
-            <spacer />
-          )}
-          <spacer />
-          <text size="xsmall" color="neutral-content-weak">
-            {timelineCount} community timelines
+        {/* Footer with pagination */}
+        <hstack padding="medium" alignment="middle" gap="medium">
+          <button size="small" appearance="bordered" disabled={pg === 0} onPress={() => setPage(pg - 1)}>
+            ← Prev
+          </button>
+          <text size="small" weight="bold" color="#787C7E">
+            Page {pg + 1} of {totalPages}
           </text>
+          <button size="small" appearance="bordered" disabled={pg >= totalPages - 1} onPress={() => setPage(pg + 1)}>
+            Next →
+          </button>
+          <spacer />
+          <text size="xsmall" color="#787C7E">{entries.length} countries</text>
         </hstack>
       </vstack>
     );
@@ -463,10 +337,11 @@ Devvit.addMenuItem({
   location: 'subreddit',
   forUserType: 'moderator',
   onPress: async (_event, context) => {
-    const subreddit = await context.reddit.getCurrentSubreddit();
+    const subredditName = (await context.reddit.getCurrentSubreddit().catch(() => null))?.name
+      ?? context.subredditName!;
     const post = await context.reddit.submitPost({
       title: 'IRCC Processing Times — Live Tracker',
-      subredditName: subreddit.name,
+      subredditName,
       preview: (
         <vstack height="100%" alignment="middle center" padding="large">
           <text size="large" weight="bold">
@@ -477,6 +352,133 @@ Devvit.addMenuItem({
     });
     context.ui.showToast({ text: 'Dashboard post created!', appearance: 'success' });
     context.ui.navigateTo(post);
+  },
+});
+
+// ─── Menu Item: Force Data Refresh ────────────────────────────────────────────
+
+Devvit.addMenuItem({
+  label: 'Refresh Processing Times Data',
+  location: 'subreddit',
+  forUserType: 'moderator',
+  onPress: async (_event, context) => {
+    try {
+      const response = await fetch(DATA_URL);
+      if (!response.ok) {
+        context.ui.showToast({ text: `Fetch failed: HTTP ${response.status}. Request domain approval at developers.reddit.com`, appearance: 'neutral' });
+        return;
+      }
+      const text = await response.text();
+      await context.redis.set(REDIS_KEY_DATA, text);
+      await context.redis.set(
+        REDIS_KEY_META,
+        JSON.stringify({ lastFetched: new Date().toISOString() })
+      );
+
+      const parsed = JSON.parse(text);
+      const count = Object.keys(parsed.processing_times || {}).length;
+      context.ui.showToast({
+        text: `Data refreshed! ${count} countries loaded.`,
+        appearance: 'success',
+      });
+    } catch (e) {
+      context.ui.showToast({ text: `Error: ${e}`, appearance: 'neutral' });
+    }
+  },
+});
+
+// ─── Menu Item: Seed Data from Wiki ───────────────────────────────────────────
+// Workaround: reads processing times JSON from the subreddit wiki page
+// "processing_times_data". Paste latest.json content into that wiki page.
+
+Devvit.addMenuItem({
+  label: 'Seed Data from Wiki Page',
+  location: 'subreddit',
+  forUserType: 'moderator',
+  onPress: async (_event, context) => {
+    try {
+      const subredditName = context.subredditName!;
+      const wiki = await context.reddit.getWikiPage(subredditName, 'processing_times_data');
+      const text = wiki.content.trim();
+
+      if (!text || !text.startsWith('{')) {
+        context.ui.showToast({
+          text: 'Wiki page "processing_times_data" is empty or not valid JSON. Paste latest.json there first.',
+          appearance: 'neutral',
+        });
+        return;
+      }
+
+      const parsed = JSON.parse(text);
+      const count = Object.keys(parsed.processing_times || {}).length;
+
+      await context.redis.set(REDIS_KEY_DATA, text);
+      await context.redis.set(
+        REDIS_KEY_META,
+        JSON.stringify({ lastFetched: new Date().toISOString() })
+      );
+
+      context.ui.showToast({
+        text: `Data seeded from wiki! ${count} countries loaded. Refresh the page.`,
+        appearance: 'success',
+      });
+    } catch (e) {
+      context.ui.showToast({ text: `Error: ${e}`, appearance: 'neutral' });
+    }
+  },
+});
+
+// ─── Menu Item: Seed Sample Data (for testing) ───────────────────────────────
+
+Devvit.addMenuItem({
+  label: 'Load Full IRCC Data (212 countries)',
+  location: 'subreddit',
+  forUserType: 'moderator',
+  onPress: async (_event, context) => {
+    try {
+      // Try fetching live data first
+      const response = await fetch(DATA_URL);
+      if (response.ok) {
+        const text = await response.text();
+        const parsed = JSON.parse(text);
+        const count = Object.keys(parsed.processing_times || {}).length;
+        await context.redis.set(REDIS_KEY_DATA, text);
+        await context.redis.set(REDIS_KEY_META, JSON.stringify({ lastFetched: new Date().toISOString() }));
+        context.ui.showToast({ text: `Live data loaded! ${count} countries. Refresh the page.`, appearance: 'success' });
+        return;
+      }
+    } catch (_e) {
+      // fetch blocked — fall through to sample data
+    }
+
+    // Fallback: hardcoded sample
+    const sampleData = {
+      last_updated: new Date().toISOString(),
+      ircc_last_updated: 'March 31, 2026',
+      processing_times: {
+        IN: { name: 'India', 'visitor-outside-canada': 28, supervisa: 191, study: 21, work: 49, raw: { 'visitor-outside-canada': '28 days', supervisa: '191 days', study: '3 weeks', work: '7 weeks' } },
+        NG: { name: 'Nigeria', 'visitor-outside-canada': 30, supervisa: 75, study: 56, work: 42, raw: { 'visitor-outside-canada': '30 days', supervisa: '75 days', study: '8 weeks', work: '6 weeks' } },
+        PH: { name: 'Philippines', 'visitor-outside-canada': 38, supervisa: 80, study: 35, work: 56, raw: { 'visitor-outside-canada': '38 days', supervisa: '80 days', study: '5 weeks', work: '8 weeks' } },
+        PK: { name: 'Pakistan', 'visitor-outside-canada': 42, supervisa: 95, study: 49, work: 63, raw: { 'visitor-outside-canada': '42 days', supervisa: '95 days', study: '7 weeks', work: '9 weeks' } },
+        CN: { name: 'China', 'visitor-outside-canada': 24, supervisa: 90, study: 28, work: 49, raw: { 'visitor-outside-canada': '24 days', supervisa: '90 days', study: '4 weeks', work: '7 weeks' } },
+        BR: { name: 'Brazil', 'visitor-outside-canada': 24, supervisa: null, study: 42, work: 35, raw: { 'visitor-outside-canada': '24 days', supervisa: 'N/A', study: '6 weeks', work: '5 weeks' } },
+        BD: { name: 'Bangladesh', 'visitor-outside-canada': 45, supervisa: 85, study: 7, work: null, raw: { 'visitor-outside-canada': '45 days', supervisa: '85 days', study: '1 week', work: 'N/A' } },
+        MX: { name: 'Mexico', 'visitor-outside-canada': 22, supervisa: null, study: 14, work: 28, raw: { 'visitor-outside-canada': '22 days', supervisa: 'N/A', study: '2 weeks', work: '4 weeks' } },
+        IR: { name: 'Iran', 'visitor-outside-canada': 60, supervisa: null, study: 42, work: 63, raw: { 'visitor-outside-canada': '60 days', supervisa: 'N/A', study: '6 weeks', work: '9 weeks' } },
+        CO: { name: 'Colombia', 'visitor-outside-canada': 22, supervisa: null, study: 21, work: 35, raw: { 'visitor-outside-canada': '22 days', supervisa: 'N/A', study: '3 weeks', work: '5 weeks' } },
+        US: { name: 'United States', 'visitor-outside-canada': 16, supervisa: null, study: 14, work: 21, raw: { 'visitor-outside-canada': '16 days', supervisa: 'N/A', study: '2 weeks', work: '3 weeks' } },
+        GB: { name: 'United Kingdom', 'visitor-outside-canada': 12, supervisa: null, study: 21, work: 28, raw: { 'visitor-outside-canada': '12 days', supervisa: 'N/A', study: '3 weeks', work: '4 weeks' } },
+        AU: { name: 'Australia', 'visitor-outside-canada': 8, supervisa: null, study: 7, work: 14, raw: { 'visitor-outside-canada': '8 days', supervisa: 'N/A', study: '1 week', work: '2 weeks' } },
+      },
+    };
+
+    await context.redis.set(REDIS_KEY_DATA, JSON.stringify(sampleData));
+    await context.redis.set(REDIS_KEY_META, JSON.stringify({ lastFetched: new Date().toISOString() }));
+
+    context.ui.showToast({
+      text: 'Domain not yet approved. Loaded 13 sample countries. Request raw.githubusercontent.com at developers.reddit.com/apps/processing-time',
+      appearance: 'neutral',
+    });
   },
 });
 

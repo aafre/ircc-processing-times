@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #FFFFFF;
+    --bg-card: #F6F7F8;
+    --bg-hover: #EDEFF1;
+    --text: #1A1A1B;
+    --text-secondary: #787C7E;
+    --border: #EDEFF1;
+    --blue: #0079D3;
+    --green: #46D160;
+    --orange: #FF8C00;
+    --red: #FF4500;
+    --live-green: #1A7F37;
+    --font: 'IBM Plex Sans', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1A1A1B;
+      --bg-card: #272729;
+      --bg-hover: #333335;
+      --text: #D7DADC;
+      --text-secondary: #818384;
+      --border: #343536;
+    }
+  }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 16px;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .header-title {
+    font-size: 16px;
+    font-weight: 600;
+    flex: 1;
+  }
+
+  .live-badge {
+    background: var(--live-green);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .header-meta {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+  }
+
+  .filters {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .filter-btn {
+    font-family: var(--font);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .filter-btn:hover { border-color: var(--blue); color: var(--blue); }
+
+  .filter-btn.active {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: #fff;
+  }
+
+  .share-btn {
+    margin-left: auto;
+    font-family: var(--font);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1.5px solid var(--blue);
+    background: transparent;
+    color: var(--blue);
+    cursor: pointer;
+  }
+
+  .share-btn:hover { background: var(--blue); color: #fff; }
+
+  .stats-bar {
+    display: flex;
+    gap: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  .stat {
+    flex: 1;
+    background: var(--bg-card);
+    padding: 10px 8px;
+    text-align: center;
+  }
+
+  .stat-value {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+
+  .country-list {
+    list-style: none;
+  }
+
+  .country-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.1s;
+  }
+
+  .country-row:hover { background: var(--bg-hover); }
+
+  .rank {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-secondary);
+    width: 24px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .flag {
+    width: 24px;
+    height: 16px;
+    border-radius: 2px;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+  }
+
+  .country-name {
+    font-size: 14px;
+    font-weight: 500;
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .days {
+    font-family: var(--mono);
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .days-unit {
+    font-family: var(--font);
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-left: 2px;
+  }
+
+  .days-na { color: var(--text-secondary); }
+  .speed-fast { color: var(--green); }
+  .speed-moderate { color: var(--blue); }
+  .speed-slow { color: var(--orange); }
+  .speed-very-slow { color: var(--red); }
+
+  .search-bar {
+    padding: 8px 16px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .search-input {
+    width: 100%;
+    font-family: var(--font);
+    font-size: 13px;
+    padding: 8px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-card);
+    color: var(--text);
+    outline: none;
+  }
+
+  .search-input:focus { border-color: var(--blue); }
+  .search-input::placeholder { color: var(--text-secondary); }
+
+  .footer {
+    padding: 10px 16px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border);
+  }
+
+  .empty {
+    padding: 40px 16px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-top">
+      <div class="header-title">🇨🇦 Processing Times</div>
+      <span class="live-badge">● LIVE</span>
+    </div>
+    <div class="header-meta" id="meta"></div>
+    <div class="filters" id="filters"></div>
+  </div>
+
+  <div class="stats-bar" id="stats"></div>
+
+  <div class="search-bar">
+    <input class="search-input" id="search" type="text" placeholder="Search countries..." autocomplete="off">
+  </div>
+
+  <ul class="country-list" id="list"></ul>
+
+  <div class="footer" id="footer"></div>
+
+<script>
+  // State
+  let data = null;
+  let visaFilter = 'visitor-outside-canada';
+  let searchQuery = '';
+
+  const VISA_LABELS = {
+    'visitor-outside-canada': 'Visitor',
+    'supervisa': 'Super Visa',
+    'study': 'Study',
+    'work': 'Work',
+  };
+
+  function getSpeedClass(days) {
+    if (days === null || days === undefined) return 'days-na';
+    if (days <= 14) return 'speed-fast';
+    if (days <= 30) return 'speed-moderate';
+    if (days <= 60) return 'speed-slow';
+    return 'speed-very-slow';
+  }
+
+  function render() {
+    if (!data) return;
+
+    // Meta
+    document.getElementById('meta').textContent =
+      `Official IRCC data · Updated ${data.ircc_last_updated || 'weekly'}`;
+
+    // Filters
+    const filtersEl = document.getElementById('filters');
+    filtersEl.innerHTML = Object.entries(VISA_LABELS).map(([key, label]) =>
+      `<button class="filter-btn ${visaFilter === key ? 'active' : ''}" data-key="${key}">${label}</button>`
+    ).join('') + '<button class="share-btn" id="shareBtn">Share Timeline</button>';
+
+    filtersEl.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        visaFilter = btn.dataset.key;
+        render();
+      });
+    });
+
+    document.getElementById('shareBtn').addEventListener('click', () => {
+      window.parent.postMessage({ type: 'showForm' }, '*');
+    });
+
+    // Filter + sort countries
+    const entries = Object.entries(data.processing_times)
+      .filter(([_, c]) => {
+        const val = c[visaFilter];
+        return val !== null && val !== undefined && typeof val === 'number';
+      })
+      .filter(([_, c]) => {
+        if (!searchQuery) return true;
+        return (c.name || '').toLowerCase().includes(searchQuery.toLowerCase());
+      })
+      .sort((a, b) => (a[1].name || a[0]).localeCompare(b[1].name || b[0]));
+
+    // Stats
+    const allDays = entries.map(([_, c]) => c[visaFilter]);
+    const avg = allDays.length ? Math.round(allDays.reduce((a, b) => a + b, 0) / allDays.length) : 0;
+    const fastest = entries.length ? entries.reduce((a, b) => a[1][visaFilter] < b[1][visaFilter] ? a : b) : null;
+    const slowest = entries.length ? entries.reduce((a, b) => a[1][visaFilter] > b[1][visaFilter] ? a : b) : null;
+
+    document.getElementById('stats').innerHTML = `
+      <div class="stat"><div class="stat-value" style="color:var(--blue)">${avg}d</div><div class="stat-label">Average</div></div>
+      <div class="stat"><div class="stat-value" style="color:var(--green)">${fastest ? fastest[1][visaFilter] + 'd' : '—'}</div><div class="stat-label">${fastest ? fastest[1].name : '—'}</div></div>
+      <div class="stat"><div class="stat-value" style="color:var(--red)">${slowest ? slowest[1][visaFilter] + 'd' : '—'}</div><div class="stat-label">${slowest ? slowest[1].name : '—'}</div></div>
+      <div class="stat"><div class="stat-value">${entries.length}</div><div class="stat-label">Countries</div></div>
+    `;
+
+    // Country list
+    const listEl = document.getElementById('list');
+    if (entries.length === 0) {
+      listEl.innerHTML = '<div class="empty">No countries found</div>';
+    } else {
+      listEl.innerHTML = entries.map(([code, c], i) => {
+        const days = c[visaFilter];
+        const flagUrl = `https://flagcdn.com/w40/${code.toLowerCase()}.png`;
+        return `<li class="country-row">
+          <span class="rank">${i + 1}</span>
+          <img class="flag" src="${flagUrl}" alt="${c.name}" loading="lazy" onerror="this.style.display='none'">
+          <span class="country-name">${c.name || code}</span>
+          <span class="days ${getSpeedClass(days)}">${typeof days === 'number' ? days : '—'}<span class="days-unit">days</span></span>
+        </li>`;
+      }).join('');
+    }
+
+    // Footer
+    document.getElementById('footer').textContent =
+      `${entries.length} countries · r/CanadaVisitorVisa`;
+  }
+
+  // Search
+  document.getElementById('search').addEventListener('input', (e) => {
+    searchQuery = e.target.value;
+    render();
+  });
+
+  // Listen for data from Devvit
+  window.addEventListener('message', (ev) => {
+    const msg = ev.data;
+    // Devvit sends: { type: 'devvit-message', data: { message: ... } }
+    if (msg?.type === 'devvit-message') {
+      const inner = msg.data?.message;
+      if (inner?.type === 'initialData') {
+        data = inner.data;
+        render();
+      }
+    }
+  });
+
+  // Tell Devvit we're ready — the client bridge wraps this automatically
+  window.parent.postMessage({ type: 'ready' }, '*');
+</script>
+</body>
+</html>
