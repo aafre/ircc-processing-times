@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+*.egg
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Playwright
+debug_ircc.png
+
+# Pytest
+.pytest_cache/
+
+# Reddit snapshots (not part of the app)
+*.txt
+
+# Claude
+.claude/

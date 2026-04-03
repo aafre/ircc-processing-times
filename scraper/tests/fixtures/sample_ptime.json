@@ -1,0 +1,32 @@
+{
+  "visitor-outside-canada": {
+    "AF": "30 days",
+    "AL": "N/A",
+    "AU": "8 days",
+    "BD": "45 days",
+    "BR": "28 days",
+    "CN": "28 days",
+    "CO": "35 days",
+    "EG": "40 days",
+    "IN": "52 days",
+    "IR": "60 days",
+    "MX": "22 days",
+    "NG": "30 days",
+    "PH": "38 days",
+    "PK": "42 days",
+    "TR": "25 days",
+    "US": "16 days",
+    "VN": "35 days",
+    "lastupdated": "March 31, 2026"
+  },
+  "supervisa": {
+    "BD": "85 days",
+    "CN": "90 days",
+    "IN": "120 days",
+    "NG": "75 days",
+    "PH": "80 days",
+    "PK": "95 days",
+    "lastupdated": "March 31, 2026"
+  },
+  "lastupdated": "March 31, 2026"
+}

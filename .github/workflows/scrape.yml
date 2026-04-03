@@ -1,0 +1,36 @@
+name: Scrape IRCC Processing Times
+
+on:
+  schedule:
+    - cron: '0 14 * * *'  # 10 AM ET daily
+  workflow_dispatch:       # Manual trigger for testing
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install httpx playwright
+          playwright install chromium --with-deps
+
+      - name: Run scraper
+        working-directory: scraper
+        run: python -m src.scrape
+
+      - name: Commit updated data
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "data: update processing times ${{ github.event.schedule && '(scheduled)' || '(manual)' }}"
+          file_pattern: "scraper/data/* scraper/processing_times.db"
