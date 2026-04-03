@@ -1,0 +1,13 @@
+{
+  "name": "ircc-processing-times",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "license": "BSD-3-Clause",
+  "main": "src/main.tsx",
+  "devDependencies": {
+    "@devvit/public-api": "0.12.17",
+    "@devvit/tsconfig": "0.12.17",
+    "typescript": "^6.0.2"
+  }
+}

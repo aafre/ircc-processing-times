@@ -25,3 +25,4 @@ debug_ircc.png
 
 # Claude
 .claude/
+node_modules/
