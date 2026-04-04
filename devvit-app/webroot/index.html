@@ -175,12 +175,9 @@
   }
 
   .flag {
-    width: 24px;
-    height: 16px;
-    border-radius: 2px;
-    object-fit: cover;
+    font-size: 18px;
+    line-height: 1;
     flex-shrink: 0;
-    box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
   }
 
   .country-name {
@@ -348,10 +345,10 @@
     } else {
       listEl.innerHTML = entries.map(([code, c], i) => {
         const days = c[visaFilter];
-        const flagUrl = `https://flagcdn.com/w40/${code.toLowerCase()}.png`;
+        const flag = code.length === 2 ? String.fromCodePoint(...[...code.toUpperCase()].map(c => 0x1F1E6 + c.charCodeAt(0) - 65)) : '';
         return `<li class="country-row">
           <span class="rank">${i + 1}</span>
-          <img class="flag" src="${flagUrl}" alt="${c.name}" loading="lazy" onerror="this.style.display='none'">
+          <span class="flag">${flag}</span>
           <span class="country-name">${c.name || code}</span>
           <span class="days ${getSpeedClass(days)}">${typeof days === 'number' ? days : '—'}<span class="days-unit">days</span></span>
         </li>`;

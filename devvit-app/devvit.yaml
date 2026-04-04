@@ -4,4 +4,3 @@ version: 0.0.1
 net:
   httpFetch:
     - raw.githubusercontent.com
-    - flagcdn.com

@@ -4,7 +4,7 @@ Devvit.configure({
   redditAPI: true,
   redis: true,
   http: {
-    domains: ['raw.githubusercontent.com', 'flagcdn.com'],
+    domains: ['raw.githubusercontent.com'],
   },
 });
 
@@ -160,8 +160,6 @@ const timelineForm = Devvit.createForm(
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-const FLAG_URL = 'https://flagcdn.com/w40';
-
 const getSpeedColor = (days: number | null | undefined): string => {
   if (typeof days !== 'number') return '#787C7E';
   if (days <= 14) return '#46D160';
@@ -179,11 +177,17 @@ Devvit.addCustomPostType({
   render: (context) => {
     const [visaFilter, setVisaFilter] = useState('visitor-outside-canada');
     const [page, setPage] = useState(0);
+    const [letterFilter, setLetterFilter] = useState('Top');
+    const [sortBy, setSortBy] = useState<'alpha' | 'fastest' | 'slowest'>('alpha');
 
     const { data: rawData, loading } = useAsync(async () => {
       const raw = await context.redis.get(REDIS_KEY_DATA);
       if (!raw) return null;
       return raw;
+    });
+
+    const { data: metaRaw } = useAsync(async () => {
+      return await context.redis.get(REDIS_KEY_META);
     });
 
     if (loading) {
@@ -208,9 +212,25 @@ Devvit.addCustomPostType({
       processing_times: Record<string, { name: string; raw: Record<string, string>; [k: string]: unknown }>;
     };
 
+    const TOP_COUNTRIES = ['IN', 'PH', 'NG', 'PK', 'CN', 'IR', 'BD'];
+    const LETTER_RANGES = ['Top', 'All', 'A-E', 'F-J', 'K-O', 'P-T', 'U-Z'];
+    const matchesFilter = (code: string, name: string, range: string): boolean => {
+      if (range === 'All') return true;
+      if (range === 'Top') return TOP_COUNTRIES.includes(code.toUpperCase());
+      const [start, end] = range.split('-');
+      const first = name.charAt(0).toUpperCase();
+      return first >= start && first <= end;
+    };
+
     const entries = Object.entries(data.processing_times)
       .filter(([_, c]) => typeof c[visaFilter] === 'number')
-      .sort((a, b) => (a[1].name || a[0]).localeCompare(b[1].name || b[0]));
+      .filter(([code, c]) => matchesFilter(code, c.name || code, letterFilter))
+      .sort((a, b) => {
+        if (sortBy === 'fastest') return (a[1][visaFilter] as number) - (b[1][visaFilter] as number);
+        if (sortBy === 'slowest') return (b[1][visaFilter] as number) - (a[1][visaFilter] as number);
+        if (letterFilter === 'Top') return TOP_COUNTRIES.indexOf(a[0].toUpperCase()) - TOP_COUNTRIES.indexOf(b[0].toUpperCase());
+        return (a[1].name || a[0]).localeCompare(b[1].name || b[0]);
+      });
 
     const perPage = 7;
     const totalPages = Math.max(1, Math.ceil(entries.length / perPage));
@@ -219,27 +239,35 @@ Devvit.addCustomPostType({
 
     return (
       <vstack height="100%">
-        {/* Header */}
-        <hstack padding="medium" alignment="middle">
-          <text weight="bold" size="large">🇨🇦 Processing Times</text>
-          <spacer />
-          <hstack backgroundColor="#1A7F37" cornerRadius="full" padding="small" gap="small" alignment="middle">
-            <text size="xsmall" weight="bold" color="#46D160">●</text>
-            <text size="xsmall" weight="bold" color="#FFFFFF">LIVE</text>
-          </hstack>
-        </hstack>
-
-        {/* Filters */}
+        {/* Header + Filters */}
         <hstack padding="small" gap="small" alignment="middle">
+          <text weight="bold" size="medium">Processing Times</text>
+          <text size="xsmall" weight="bold" color="#46D160">Latest</text>
+          <spacer />
           {VISA_KEYS.map((key) => (
             <button key={key} size="small" appearance={visaFilter === key ? 'primary' : 'bordered'}
               onPress={() => { setVisaFilter(key); setPage(0); }}>
               {VISA_LABELS[key]}
             </button>
           ))}
+        </hstack>
+
+        {/* Letter range + sort filters */}
+        <hstack padding="small" gap="small" alignment="middle">
+          {LETTER_RANGES.map((range) => (
+            <button key={range} size="small" appearance={letterFilter === range ? 'primary' : 'bordered'}
+              onPress={() => { setLetterFilter(range); setPage(0); }}>
+              {range}
+            </button>
+          ))}
           <spacer />
-          <button size="small" appearance="bordered" icon="calendar" onPress={() => context.ui.showForm(timelineForm)}>
-            Share
+          <button size="small" appearance={sortBy === 'fastest' ? 'primary' : 'bordered'}
+            onPress={() => { setSortBy(sortBy === 'fastest' ? 'alpha' : 'fastest'); setPage(0); }}>
+            ↑Fast
+          </button>
+          <button size="small" appearance={sortBy === 'slowest' ? 'primary' : 'bordered'}
+            onPress={() => { setSortBy(sortBy === 'slowest' ? 'alpha' : 'slowest'); setPage(0); }}>
+            ↓Slow
           </button>
         </hstack>
 
@@ -250,7 +278,7 @@ Devvit.addCustomPostType({
             return (
               <hstack key={code} padding="small" gap="medium" backgroundColor="secondary-background" cornerRadius="medium" alignment="middle">
                 <text size="small" color="#787C7E">{pg * perPage + idx + 1}</text>
-                <text size="medium" weight="bold" grow>{country.name || code}</text>
+                <text size="medium" weight="bold" grow>{(country.name || code).replace(/&rsquo;/g, "'").replace(/&amp;/g, '&').replace(/&quot;/g, '"')}</text>
                 <text size="large" weight="bold" color={getSpeedColor(days)}>{days}</text>
                 <text size="xsmall" color="#787C7E">days</text>
               </hstack>
@@ -270,7 +298,7 @@ Devvit.addCustomPostType({
             Next →
           </button>
           <spacer />
-          <text size="xsmall" color="#787C7E">{entries.length} countries</text>
+          <text size="xsmall" color="#787C7E">{entries.length} countries · Fetched from IRCC</text>
         </hstack>
       </vstack>
     );
@@ -340,7 +368,7 @@ Devvit.addMenuItem({
     const subredditName = (await context.reddit.getCurrentSubreddit().catch(() => null))?.name
       ?? context.subredditName!;
     const post = await context.reddit.submitPost({
-      title: 'IRCC Processing Times — Live Tracker',
+      title: 'IRCC Visa Processing Times — Live Tracker',
       subredditName,
       preview: (
         <vstack height="100%" alignment="middle center" padding="large">
