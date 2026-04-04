@@ -8,7 +8,9 @@ const { date } = Astro.props;
 
 <div class="last-updated">
   <span class="last-updated__dot"></span>
-  <span class="mono">Data from IRCC — {date}</span>
+  <span class="mono">Latest official IRCC data ({date})</span>
+  <span class="last-updated__sep">·</span>
+  <span class="last-updated__auto">Updated daily</span>
 </div>
 
 <style>
@@ -18,6 +20,7 @@ const { date } = Astro.props;
     gap: 0.5em;
     font-size: 0.8rem;
     color: var(--text-muted);
+    flex-wrap: wrap;
   }
 
   .last-updated__dot {
@@ -27,5 +30,16 @@ const { date } = Astro.props;
     background: var(--status-fast);
     box-shadow: 0 0 8px var(--status-fast);
     flex-shrink: 0;
+  }
+
+  .last-updated__sep {
+    color: var(--text-muted);
+    opacity: 0.4;
+  }
+
+  .last-updated__auto {
+    color: var(--accent-secondary);
+    font-size: 0.75rem;
+    font-weight: 500;
   }
 </style>
