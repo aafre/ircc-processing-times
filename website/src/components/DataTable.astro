@@ -1,0 +1,51 @@
+---
+import type { CountryData } from '../utils/countries';
+import { VISA_TYPES, getSpeedClass, formatDays } from '../utils/formatting';
+
+interface Props {
+  country: CountryData;
+}
+
+const { country } = Astro.props;
+
+const rows = Object.values(VISA_TYPES).map(vt => ({
+  label: vt.label,
+  days: country[vt.key as keyof CountryData] as number | null,
+  raw: country.raw[vt.key === 'visitor' ? 'visitor-outside-canada' : vt.key] || '—',
+}));
+---
+
+<div class="data-table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Visa Type</th>
+        <th>Processing Time</th>
+        <th>IRCC Raw</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map(row => (
+        <tr>
+          <td>{row.label}</td>
+          <td class={getSpeedClass(row.days)}>{formatDays(row.days)}</td>
+          <td class="raw-text">{row.raw}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .data-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--bg-surface);
+  }
+
+  .raw-text {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+</style>

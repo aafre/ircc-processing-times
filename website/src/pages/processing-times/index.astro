@@ -1,0 +1,135 @@
+---
+import Base from '../../layouts/Base.astro';
+import SEOHead from '../../components/SEOHead.astro';
+import SearchBar from '../../components/SearchBar.astro';
+import LastUpdated from '../../components/LastUpdated.astro';
+import { getSiteData } from '../../utils/countries';
+import { getSpeedClass, formatDays } from '../../utils/formatting';
+
+const data = await getSiteData();
+
+// Sort: countries with visitor data first (by days ascending), then those without
+const sorted = [...data.countries].sort((a, b) => {
+  if (a.visitor !== null && b.visitor !== null) return a.visitor - b.visitor;
+  if (a.visitor !== null) return -1;
+  if (b.visitor !== null) return 1;
+  return a.name.localeCompare(b.name);
+});
+---
+
+<Base>
+  <SEOHead
+    slot="head"
+    title="Canada Visa Processing Times by Country — All Countries | IRCC Tracker"
+    description="Compare Canada visa processing times for all countries. Search and filter by processing speed. Data from IRCC, updated daily."
+    canonical="/processing-times/"
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="page-header animate-in">
+        <h1 style="font-size: clamp(2rem, 4vw, 3.5rem);">All Countries</h1>
+        <p style="color: var(--text-secondary); margin-top: var(--space-sm);">
+          Visitor visa processing times for {data.countries.length} countries
+        </p>
+        <div style="margin-top: var(--space-md);">
+          <LastUpdated date={data.irccLastUpdated} />
+        </div>
+      </div>
+
+      <div class="controls animate-in stagger-1">
+        <SearchBar />
+      </div>
+
+      <div class="grid-countries" id="countries-grid">
+        {sorted.map((country, i) => (
+          <a
+            href={`/processing-times/${country.slug}/`}
+            class={`card country-card animate-in stagger-${Math.min(i % 6 + 1, 6)}`}
+            data-country={country.name}
+            data-days={country.visitor ?? 9999}
+          >
+            <div class="cc-header">
+              <span class={`fi fi-${country.code.toLowerCase()}`}></span>
+              <span class="cc-name">{country.name}</span>
+            </div>
+            <div class="cc-time">
+              <span class={`cc-days ${getSpeedClass(country.visitor)}`}>
+                {country.visitor !== null ? country.visitor : '—'}
+              </span>
+              {country.visitor !== null && <span class="cc-unit">days</span>}
+            </div>
+            <div class="cc-meta">
+              {country.visitor !== null ? (
+                <span class={`badge ${getSpeedClass(country.visitor)}`}>Visitor visa</span>
+              ) : (
+                <span class="badge speed-unknown">No data</span>
+              )}
+              {country.supervisa !== null && (
+                <span class="badge" style="color: var(--text-muted);">SV: {country.supervisa}d</span>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .page-header {
+    margin-bottom: var(--space-lg);
+  }
+
+  .controls {
+    margin-bottom: var(--space-xl);
+  }
+
+  .country-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .cc-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .cc-name {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
+  .cc-time {
+    display: flex;
+    align-items: baseline;
+    gap: 0.3em;
+  }
+
+  .cc-days {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.8rem;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .cc-unit {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .cc-meta {
+    display: flex;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+  }
+</style>

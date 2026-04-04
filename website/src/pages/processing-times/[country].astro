@@ -1,0 +1,309 @@
+---
+import Base from '../../layouts/Base.astro';
+import SEOHead from '../../components/SEOHead.astro';
+import BigNumber from '../../components/BigNumber.astro';
+import TrendBadge from '../../components/TrendBadge.astro';
+import DataTable from '../../components/DataTable.astro';
+import LastUpdated from '../../components/LastUpdated.astro';
+import HistoryChart from '../../components/HistoryChart.astro';
+import { getSiteData, getCountryHistory, getRegionForCountry } from '../../utils/countries';
+import { formatDays, getSpeedClass, getSpeedLabel, VISA_TYPES, currentMonthYear } from '../../utils/formatting';
+import type { CountryData, HistoryEntry } from '../../utils/countries';
+
+export async function getStaticPaths() {
+  const data = await getSiteData();
+  return data.countries.map(country => ({
+    params: { country: country.slug },
+    props: { country, irccLastUpdated: data.irccLastUpdated, allCountries: data.countries },
+  }));
+}
+
+interface Props {
+  country: CountryData;
+  irccLastUpdated: string;
+  allCountries: CountryData[];
+}
+
+const { country, irccLastUpdated, allCountries } = Astro.props;
+const history = await getCountryHistory(country.code);
+const regionInfo = getRegionForCountry(country.code);
+
+const monthYear = currentMonthYear();
+const visitorDays = country.visitor !== null ? `${country.visitor} Days` : 'No Data';
+const pageTitle = `Canada Visitor Visa Processing Time from ${country.name} — ${visitorDays} (${monthYear})`;
+const pageDescription = `Current Canada visitor visa processing time from ${country.name} is ${formatDays(country.visitor)}. Track IRCC processing times for visitor visa, study permit, work permit, and super visa.`;
+
+// JSON-LD FAQPage
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: `How long does it take to get a Canada visitor visa from ${country.name}?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: country.visitor !== null
+          ? `As of ${irccLastUpdated}, the processing time for a Canada visitor visa from ${country.name} is ${formatDays(country.visitor)}.`
+          : `Processing time data is not currently available for ${country.name}. Check IRCC for the latest updates.`,
+      },
+    },
+    {
+      '@type': 'Question',
+      name: `How long does a Canada study permit take from ${country.name}?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: country.study !== null
+          ? `The current processing time for a Canada study permit from ${country.name} is ${formatDays(country.study)}.`
+          : `Study permit processing time data is not currently available for ${country.name}.`,
+      },
+    },
+    {
+      '@type': 'Question',
+      name: `What is the Canada super visa processing time from ${country.name}?`,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: country.supervisa !== null
+          ? `The super visa processing time from ${country.name} is currently ${formatDays(country.supervisa)}.`
+          : `Super visa processing time data is not currently available for ${country.name}.`,
+      },
+    },
+  ],
+};
+
+// Regional peers
+const peers = regionInfo
+  ? regionInfo.peers
+      .map(code => allCountries.find(c => c.code === code))
+      .filter(Boolean) as CountryData[]
+  : [];
+---
+
+<Base>
+  <SEOHead
+    slot="head"
+    title={pageTitle}
+    description={pageDescription}
+    canonical={`/processing-times/${country.slug}/`}
+    jsonLd={faqSchema}
+  />
+
+  <section class="section">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb mono animate-in">
+        <a href="/">Home</a>
+        <span class="sep">/</span>
+        <a href="/processing-times/">All Countries</a>
+        <span class="sep">/</span>
+        <span>{country.name}</span>
+      </nav>
+
+      <!-- Country header -->
+      <div class="country-header animate-in stagger-1">
+        <div class="country-header__flag">
+          <span class={`fi fi-${country.code.toLowerCase()}`} style="font-size: 3rem;"></span>
+        </div>
+        <div class="country-header__info">
+          <h1 style="font-size: clamp(1.8rem, 4vw, 3rem);">{country.name}</h1>
+          <LastUpdated date={irccLastUpdated} />
+        </div>
+      </div>
+
+      <!-- Primary number -->
+      <div class="hero-number animate-in stagger-2">
+        <BigNumber value={country.visitor} label="Visitor Visa Processing Time" />
+        <div style="margin-top: var(--space-sm);">
+          <TrendBadge history={history} visaType="visitor" />
+          <span class={`badge ${getSpeedClass(country.visitor)}`} style="margin-left: var(--space-xs);">
+            {getSpeedLabel(country.visitor)}
+          </span>
+        </div>
+      </div>
+
+      <!-- Visa type cards -->
+      <div class="visa-grid animate-in stagger-3">
+        {Object.values(VISA_TYPES).map(vt => {
+          const val = country[vt.key as keyof CountryData] as number | null;
+          return (
+            <div class="card visa-card">
+              <span class="visa-card__label">{vt.label}</span>
+              <span class={`visa-card__value ${getSpeedClass(val)}`}>
+                {val !== null ? val : '—'}
+              </span>
+              {val !== null && <span class="visa-card__unit">days</span>}
+            </div>
+          );
+        })}
+      </div>
+
+      <!-- Data table -->
+      <div class="animate-in stagger-4" style="margin-top: var(--space-xl);">
+        <DataTable country={country} />
+      </div>
+
+      <!-- History chart -->
+      <div class="animate-in stagger-5" style="margin-top: var(--space-xl);">
+        <HistoryChart history={history} countryName={country.name} />
+      </div>
+
+      <!-- Regional peers -->
+      {peers.length > 0 && (
+        <div class="animate-in stagger-6" style="margin-top: var(--space-xl);">
+          <h3 style="margin-bottom: var(--space-md);">
+            Also in {regionInfo!.region}
+          </h3>
+          <div class="peers-grid">
+            {peers.slice(0, 6).map(peer => (
+              <a href={`/processing-times/${peer.slug}/`} class="card peer-card">
+                <span class={`fi fi-${peer.code.toLowerCase()}`}></span>
+                <span class="peer-name">{peer.name}</span>
+                <span class={`peer-days mono ${getSpeedClass(peer.visitor)}`}>
+                  {peer.visitor !== null ? `${peer.visitor}d` : '—'}
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Community CTA -->
+      <div class="cta-strip animate-in" style="margin-top: var(--space-xl);">
+        <div class="card" style="text-align: center; padding: var(--space-xl);">
+          <h3>Discuss {country.name} processing times</h3>
+          <p style="color: var(--text-secondary); margin-top: var(--space-sm); margin-left: auto; margin-right: auto;">
+            Share your timeline, ask questions, and get advice from others who applied from {country.name}.
+          </p>
+          <a
+            href="https://reddit.com/r/CanadaVisitorVisa"
+            target="_blank"
+            rel="noopener"
+            class="cta-btn"
+          >
+            Visit r/CanadaVisitorVisa →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .breadcrumb {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: var(--space-lg);
+  }
+
+  .breadcrumb a {
+    color: var(--text-muted);
+  }
+
+  .breadcrumb a:hover {
+    color: var(--accent-primary);
+  }
+
+  .sep {
+    margin: 0 0.4em;
+    opacity: 0.4;
+  }
+
+  .country-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+  }
+
+  .country-header__flag .fi {
+    border-radius: 4px;
+  }
+
+  .hero-number {
+    margin-bottom: var(--space-xl);
+  }
+
+  /* Visa grid */
+  .visa-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .visa-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  .visa-card__label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+  }
+
+  .visa-card__value {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.5rem;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .visa-card__unit {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  /* Peers */
+  .peers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-sm);
+  }
+
+  .peer-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .peer-name {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    flex: 1;
+  }
+
+  .peer-days {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    margin-top: var(--space-md);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.7rem 1.8rem;
+    background: var(--accent-primary);
+    color: var(--bg-deep);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(228, 168, 83, 0.3);
+    color: var(--bg-deep);
+  }
+</style>

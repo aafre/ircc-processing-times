@@ -1,0 +1,152 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'IRCC Processing Times — Canada Visa Tracker',
+  description = 'Track real-time Canada visa processing times from IRCC for 200+ countries. Visitor visa, study permit, work permit, and super visa.',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <slot name="head" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="/" class="nav__logo">
+        <span class="nav__mark">◈</span>
+        <span class="nav__title">IRCC Times</span>
+      </a>
+      <div class="nav__links">
+        <a href="/processing-times/">All Countries</a>
+        <a href="/about/">About</a>
+        <a href="https://reddit.com/r/CanadaVisitorVisa" target="_blank" rel="noopener">r/CanadaVisitorVisa</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <span class="mono" style="font-size: 0.75rem; color: var(--text-muted);">
+          Data sourced from IRCC. Not affiliated with the Government of Canada.
+        </span>
+      </div>
+      <div class="footer__links">
+        <a href="https://reddit.com/r/CanadaVisitorVisa" target="_blank" rel="noopener">Reddit</a>
+        <a href="https://github.com/aafre/ircc-processing-times" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(11, 17, 32, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .nav__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .nav__mark {
+    font-size: 1.3rem;
+    color: var(--accent-primary);
+  }
+
+  .nav__title {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  .nav__links {
+    display: flex;
+    gap: var(--space-lg);
+  }
+
+  .nav__links a {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav__links a:hover {
+    color: var(--text-primary);
+  }
+
+  .footer {
+    margin-top: var(--space-2xl);
+    padding: var(--space-xl) 0;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .footer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .footer__links {
+    display: flex;
+    gap: var(--space-lg);
+  }
+
+  .footer__links a {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+
+  .footer__links a:hover {
+    color: var(--accent-primary);
+  }
+
+  @media (max-width: 640px) {
+    .nav__links {
+      gap: var(--space-md);
+    }
+
+    .nav__links a:last-child {
+      display: none;
+    }
+  }
+</style>

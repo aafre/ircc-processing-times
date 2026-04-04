@@ -1,0 +1,280 @@
+---
+import Base from '../layouts/Base.astro';
+import SEOHead from '../components/SEOHead.astro';
+import LastUpdated from '../components/LastUpdated.astro';
+import { getSiteData, TOP_COUNTRY_CODES } from '../utils/countries';
+import { getSpeedClass, formatDays } from '../utils/formatting';
+
+const data = await getSiteData();
+const topCountries = TOP_COUNTRY_CODES
+  .map(code => data.countries.find(c => c.code === code))
+  .filter(Boolean) as NonNullable<typeof data.countries[number]>[];
+
+const totalWithData = data.countries.filter(c => c.visitor !== null).length;
+---
+
+<Base>
+  <SEOHead
+    slot="head"
+    title="Canada Visa Processing Times — IRCC Tracker for 200+ Countries"
+    description="Track real-time Canada visa processing times from IRCC. See how long visitor visas, study permits, work permits, and super visas take from your country."
+    canonical="/"
+  />
+
+  <!-- Hero -->
+  <section class="hero aurora-bg">
+    <div class="container">
+      <div class="hero__eyebrow animate-in">
+        <LastUpdated date={data.irccLastUpdated} />
+      </div>
+      <h1 class="hero__title animate-in stagger-1">
+        Canada Visa<br />Processing Times
+      </h1>
+      <p class="hero__sub animate-in stagger-2">
+        Live data from IRCC for <strong class="mono">{totalWithData}</strong> countries.
+        Updated daily.
+      </p>
+      <div class="hero__actions animate-in stagger-3">
+        <a href="/processing-times/" class="btn-primary">View All Countries</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats strip -->
+  <section class="stats-strip">
+    <div class="container stats-strip__inner">
+      <div class="stat">
+        <span class="stat__value mono">{data.countries.length}</span>
+        <span class="stat__label">Countries Tracked</span>
+      </div>
+      <div class="stat">
+        <span class="stat__value mono">4</span>
+        <span class="stat__label">Visa Categories</span>
+      </div>
+      <div class="stat">
+        <span class="stat__value mono">Daily</span>
+        <span class="stat__label">Update Frequency</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Countries -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header animate-in">
+        <h2>Top Countries</h2>
+        <p style="color: var(--text-secondary); margin-top: var(--space-sm);">
+          Visitor visa processing times for the most searched countries
+        </p>
+      </div>
+      <div class="top-table animate-in stagger-2">
+        <table>
+          <thead>
+            <tr>
+              <th>Country</th>
+              <th>Visitor</th>
+              <th>Super Visa</th>
+              <th>Study</th>
+              <th>Work</th>
+            </tr>
+          </thead>
+          <tbody>
+            {topCountries.map(country => (
+              <tr>
+                <td>
+                  <a href={`/processing-times/${country.slug}/`} class="country-link">
+                    <span class={`fi fi-${country.code.toLowerCase()}`}></span>
+                    {country.name}
+                  </a>
+                </td>
+                <td class={getSpeedClass(country.visitor)}>{formatDays(country.visitor)}</td>
+                <td class={getSpeedClass(country.supervisa)}>{formatDays(country.supervisa)}</td>
+                <td class={getSpeedClass(country.study)}>{formatDays(country.study)}</td>
+                <td class={getSpeedClass(country.work)}>{formatDays(country.work)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div style="text-align: center; margin-top: var(--space-xl);">
+        <a href="/processing-times/" class="btn-secondary">See all {data.countries.length} countries →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is this -->
+  <section class="section">
+    <div class="container">
+      <div class="info-grid">
+        <div class="card info-card animate-in stagger-1">
+          <h3>What is this?</h3>
+          <p style="color: var(--text-secondary); margin-top: var(--space-sm);">
+            This site tracks official IRCC visa processing times daily and displays them in an easy-to-read format. Data is pulled directly from the Government of Canada website.
+          </p>
+        </div>
+        <div class="card info-card animate-in stagger-2">
+          <h3>How often is it updated?</h3>
+          <p style="color: var(--text-secondary); margin-top: var(--space-sm);">
+            Our scraper runs daily. IRCC typically updates their processing times weekly, though the schedule varies. We track every change to build historical trends.
+          </p>
+        </div>
+        <div class="card info-card animate-in stagger-3">
+          <h3>Join the community</h3>
+          <p style="color: var(--text-secondary); margin-top: var(--space-sm);">
+            Discuss processing times, share timelines, and get advice on
+            <a href="https://reddit.com/r/CanadaVisitorVisa" target="_blank" rel="noopener">r/CanadaVisitorVisa</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding: var(--space-2xl) 0 var(--space-xl);
+    text-align: center;
+  }
+
+  .hero__eyebrow {
+    margin-bottom: var(--space-lg);
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero__title {
+    font-weight: 200;
+    color: var(--text-primary);
+  }
+
+  .hero__title br + * {
+    font-weight: 800;
+  }
+
+  .hero__sub {
+    margin-top: var(--space-md);
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__actions {
+    margin-top: var(--space-xl);
+  }
+
+  .btn-primary {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.85rem 2rem;
+    background: var(--accent-primary);
+    color: var(--bg-deep);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(228, 168, 83, 0.3);
+    color: var(--bg-deep);
+  }
+
+  .btn-secondary {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent-primary);
+    text-decoration: none;
+  }
+
+  .btn-secondary:hover {
+    text-decoration: underline;
+  }
+
+  /* Stats strip */
+  .stats-strip {
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--bg-surface);
+    padding: var(--space-lg) 0;
+  }
+
+  .stats-strip__inner {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2xl);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .stat__value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent-secondary);
+  }
+
+  .stat__label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+  }
+
+  /* Top table */
+  .section-header {
+    margin-bottom: var(--space-xl);
+  }
+
+  .top-table {
+    overflow-x: auto;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    background: var(--bg-surface);
+  }
+
+  .country-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .country-link:hover {
+    color: var(--accent-primary);
+  }
+
+  /* Info grid */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .info-card {
+    padding: var(--space-xl);
+  }
+
+  @media (max-width: 640px) {
+    .stats-strip__inner {
+      gap: var(--space-xl);
+    }
+
+    .stat__value {
+      font-size: 1.3rem;
+    }
+  }
+</style>

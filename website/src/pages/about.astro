@@ -1,0 +1,96 @@
+---
+import Base from '../layouts/Base.astro';
+import SEOHead from '../components/SEOHead.astro';
+---
+
+<Base>
+  <SEOHead
+    slot="head"
+    title="About — IRCC Processing Time Tracker"
+    description="Learn about the IRCC Processing Time Tracker. We scrape official IRCC data daily to track Canada visa processing times for 200+ countries."
+    canonical="/about/"
+  />
+
+  <section class="section">
+    <div class="container about-page">
+      <h1 class="animate-in" style="font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 200;">
+        About <span style="font-weight: 800;">This Project</span>
+      </h1>
+
+      <div class="about-content animate-in stagger-1">
+        <div class="card about-card">
+          <h3>What is this?</h3>
+          <p>
+            The IRCC Processing Time Tracker is an open-source project that scrapes
+            official processing times from Immigration, Refugees and Citizenship Canada (IRCC)
+            and presents them in a clean, searchable format.
+          </p>
+          <p>
+            We track visitor visas, super visas, study permits, and work permits for
+            every country that IRCC publishes data for — over 200 countries in total.
+          </p>
+        </div>
+
+        <div class="card about-card">
+          <h3>Where does the data come from?</h3>
+          <p>
+            All processing time data comes directly from the
+            <a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html" target="_blank" rel="noopener">
+              IRCC Check Processing Times
+            </a> page. Our automated scraper runs daily and stores historical data
+            so you can see trends over time.
+          </p>
+          <p>
+            This site is <strong>not affiliated with the Government of Canada</strong>.
+            Processing times are estimates and may change without notice.
+          </p>
+        </div>
+
+        <div class="card about-card">
+          <h3>Open Source</h3>
+          <p>
+            The scraper, data, and this website are all open source. You can find the code on
+            <a href="https://github.com/aafre/ircc-processing-times" target="_blank" rel="noopener">GitHub</a>.
+          </p>
+        </div>
+
+        <div class="card about-card">
+          <h3>Community</h3>
+          <p>
+            This project is built for the
+            <a href="https://reddit.com/r/CanadaVisitorVisa" target="_blank" rel="noopener">r/CanadaVisitorVisa</a>
+            community on Reddit. Join us to discuss processing times, share your timelines,
+            and get advice from others going through the visa process.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .about-page {
+    max-width: 720px;
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+  }
+
+  .about-card {
+    padding: var(--space-xl);
+  }
+
+  .about-card p {
+    color: var(--text-secondary);
+    margin-top: var(--space-sm);
+    line-height: 1.7;
+  }
+
+  .about-card p + p {
+    margin-top: var(--space-md);
+  }
+</style>

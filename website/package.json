@@ -1,0 +1,17 @@
+{
+  "name": "ircc-processing-times-website",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.7.10",
+    "@astrojs/sitemap": "^3.3.1",
+    "uplot": "^1.6.31",
+    "flag-icons": "^7.3.2"
+  }
+}

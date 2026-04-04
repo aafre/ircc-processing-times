@@ -26,3 +26,10 @@ debug_ircc.png
 # Claude
 .claude/
 node_modules/
+
+# Astro
+website/dist/
+website/.astro/
+
+# Environment
+.env

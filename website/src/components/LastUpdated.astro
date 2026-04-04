@@ -1,0 +1,31 @@
+---
+interface Props {
+  date: string;
+}
+
+const { date } = Astro.props;
+---
+
+<div class="last-updated">
+  <span class="last-updated__dot"></span>
+  <span class="mono">Data from IRCC — {date}</span>
+</div>
+
+<style>
+  .last-updated {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .last-updated__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--status-fast);
+    box-shadow: 0 0 8px var(--status-fast);
+    flex-shrink: 0;
+  }
+</style>

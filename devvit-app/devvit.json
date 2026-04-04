@@ -1,0 +1,6 @@
+{
+  "name": "processing-time",
+  "blocks": {
+    "entry": "src/main.tsx"
+  }
+}

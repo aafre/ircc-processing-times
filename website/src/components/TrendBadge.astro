@@ -1,0 +1,60 @@
+---
+import type { HistoryEntry } from '../utils/countries';
+
+interface Props {
+  history: HistoryEntry[];
+  visaType?: 'visitor' | 'supervisa' | 'study' | 'work';
+}
+
+const { history, visaType = 'visitor' } = Astro.props;
+
+let trend: 'up' | 'down' | 'stable' | 'none' = 'none';
+let diff = 0;
+
+if (history.length >= 2) {
+  const latest = history[history.length - 1][visaType];
+  const prev = history[history.length - 2][visaType];
+  if (latest !== null && prev !== null) {
+    diff = latest - prev;
+    if (diff > 0) trend = 'up';
+    else if (diff < 0) trend = 'down';
+    else trend = 'stable';
+  }
+}
+
+const arrows: Record<string, string> = {
+  up: '↑',
+  down: '↓',
+  stable: '→',
+  none: '·',
+};
+
+const colors: Record<string, string> = {
+  up: 'var(--status-slow)',
+  down: 'var(--status-fast)',
+  stable: 'var(--text-muted)',
+  none: 'var(--text-muted)',
+};
+---
+
+{trend !== 'none' ? (
+  <span class="badge trend-badge" style={`color: ${colors[trend]}; border-color: ${colors[trend]}30`}>
+    <span class="trend-arrow">{arrows[trend]}</span>
+    {diff !== 0 && <span>{Math.abs(diff)}d</span>}
+    {diff === 0 && <span>Stable</span>}
+  </span>
+) : (
+  <span class="badge trend-badge">
+    <span style="color: var(--text-muted)">No trend data</span>
+  </span>
+)}
+
+<style>
+  .trend-badge {
+    font-size: 0.75rem;
+  }
+  .trend-arrow {
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+</style>

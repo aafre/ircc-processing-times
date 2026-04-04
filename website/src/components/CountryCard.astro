@@ -1,0 +1,84 @@
+---
+import type { CountryData } from '../utils/countries';
+import { getSpeedClass, formatDays } from '../utils/formatting';
+
+interface Props {
+  country: CountryData;
+  index?: number;
+}
+
+const { country, index = 0 } = Astro.props;
+const speedClass = getSpeedClass(country.visitor);
+const staggerClass = `stagger-${Math.min(index % 6 + 1, 6)}`;
+---
+
+<a href={`/processing-times/${country.slug}/`} class={`card country-card animate-in ${staggerClass}`}>
+  <div class="country-card__header">
+    <span class={`fi fi-${country.code.toLowerCase()}`}></span>
+    <span class="country-card__name">{country.name}</span>
+  </div>
+  <div class="country-card__time">
+    <span class={`country-card__days ${speedClass}`}>
+      {country.visitor !== null ? country.visitor : '—'}
+    </span>
+    {country.visitor !== null && (
+      <span class="country-card__unit">days</span>
+    )}
+  </div>
+  <div class="country-card__meta">
+    {country.visitor !== null ? (
+      <span class={`badge ${speedClass}`}>Visitor visa</span>
+    ) : (
+      <span class="badge speed-unknown">No data</span>
+    )}
+  </div>
+</a>
+
+<style>
+  .country-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .country-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .country-card__name {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
+  .country-card__time {
+    display: flex;
+    align-items: baseline;
+    gap: 0.3em;
+  }
+
+  .country-card__days {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.8rem;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .country-card__unit {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .country-card__meta {
+    display: flex;
+    gap: var(--space-xs);
+  }
+</style>

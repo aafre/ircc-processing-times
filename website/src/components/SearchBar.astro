@@ -1,0 +1,67 @@
+---
+// Client-side search, no props needed
+---
+
+<div class="search-bar">
+  <input
+    type="text"
+    id="country-search"
+    placeholder="Search countries..."
+    autocomplete="off"
+    spellcheck="false"
+  />
+  <span class="search-bar__icon">⌕</span>
+</div>
+
+<script>
+  const input = document.getElementById('country-search') as HTMLInputElement;
+  if (input) {
+    input.addEventListener('input', () => {
+      const query = input.value.toLowerCase().trim();
+      const cards = document.querySelectorAll<HTMLElement>('[data-country]');
+      cards.forEach(card => {
+        const name = card.dataset.country?.toLowerCase() || '';
+        card.style.display = name.includes(query) ? '' : 'none';
+      });
+    });
+  }
+</script>
+
+<style>
+  .search-bar {
+    position: relative;
+    max-width: 420px;
+    width: 100%;
+  }
+
+  .search-bar input {
+    width: 100%;
+    padding: 0.85rem 1rem 0.85rem 2.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-bar input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .search-bar input:focus {
+    border-color: var(--accent-primary);
+  }
+
+  .search-bar__icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    pointer-events: none;
+  }
+</style>

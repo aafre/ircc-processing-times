@@ -1,0 +1,147 @@
+---
+import type { HistoryEntry } from '../utils/countries';
+
+interface Props {
+  history: HistoryEntry[];
+  countryName: string;
+}
+
+const { history, countryName } = Astro.props;
+const chartData = JSON.stringify(history);
+---
+
+<div class="chart-container">
+  <h3>Processing Time Trend</h3>
+  {history.length < 2 ? (
+    <div class="chart-placeholder">
+      <p>Historical data will appear here as IRCC updates are tracked over time.</p>
+      <p class="mono" style="font-size: 0.75rem; color: var(--text-muted);">
+        Currently tracking {history.length} data point{history.length !== 1 ? 's' : ''}
+      </p>
+    </div>
+  ) : (
+    <div id="history-chart" class="chart-mount" data-history={chartData} data-country={countryName}></div>
+  )}
+</div>
+
+<script>
+  async function initChart() {
+    const el = document.getElementById('history-chart');
+    if (!el) return;
+
+    const history = JSON.parse(el.dataset.history || '[]');
+    if (history.length < 2) return;
+
+    const uPlot = (await import('uplot')).default;
+    // @ts-ignore - CSS import
+    await import('uplot/dist/uPlot.min.css');
+
+    const dates = history.map((e: any) => new Date(e.date).getTime() / 1000);
+    const visitor = history.map((e: any) => e.visitor);
+    const supervisa = history.map((e: any) => e.supervisa);
+    const study = history.map((e: any) => e.study);
+    const work = history.map((e: any) => e.work);
+
+    const series = [
+      {},
+      { label: 'Visitor', stroke: '#3ECFB4', width: 2, points: { size: 6 } },
+      { label: 'Super Visa', stroke: '#E4A853', width: 2, points: { size: 6 } },
+      { label: 'Study', stroke: '#34D399', width: 2, dash: [6, 4], points: { size: 5 } },
+      { label: 'Work', stroke: '#FBBF24', width: 2, dash: [6, 4], points: { size: 5 } },
+    ];
+
+    const opts = {
+      width: el.clientWidth,
+      height: 300,
+      series,
+      axes: [
+        {
+          stroke: '#64748B',
+          grid: { stroke: 'rgba(148, 163, 184, 0.06)', width: 1 },
+          ticks: { stroke: 'rgba(148, 163, 184, 0.1)', width: 1 },
+          font: '11px IBM Plex Mono',
+        },
+        {
+          stroke: '#64748B',
+          grid: { stroke: 'rgba(148, 163, 184, 0.06)', width: 1 },
+          ticks: { stroke: 'rgba(148, 163, 184, 0.1)', width: 1 },
+          font: '11px IBM Plex Mono',
+          label: 'Days',
+          labelFont: '12px IBM Plex Mono',
+        },
+      ],
+      scales: {
+        x: { time: true },
+      },
+      legend: {
+        show: true,
+      },
+      cursor: {
+        drag: { x: false, y: false },
+      },
+    };
+
+    new uPlot(opts as any, [dates, visitor, supervisa, study, work], el);
+
+    window.addEventListener('resize', () => {
+      // Simple re-render on resize handled by uPlot internals
+    });
+  }
+
+  // Load when visible
+  if ('IntersectionObserver' in window) {
+    const el = document.getElementById('history-chart');
+    if (el) {
+      const obs = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          obs.disconnect();
+          initChart();
+        }
+      }, { threshold: 0.1 });
+      obs.observe(el);
+    }
+  } else {
+    initChart();
+  }
+</script>
+
+<style>
+  .chart-container {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+  }
+
+  .chart-container h3 {
+    margin-bottom: var(--space-md);
+  }
+
+  .chart-mount {
+    width: 100%;
+    min-height: 300px;
+  }
+
+  .chart-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    border: 1px dashed var(--border-subtle);
+    border-radius: var(--radius-sm);
+    text-align: center;
+    padding: var(--space-lg);
+    color: var(--text-secondary);
+  }
+
+  /* Override uPlot styles for dark theme */
+  .chart-container :global(.u-legend) {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+  }
+
+  .chart-container :global(.u-legend .u-label) {
+    color: var(--text-secondary);
+  }
+</style>
