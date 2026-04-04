@@ -2,7 +2,7 @@ name: Scrape IRCC Processing Times
 
 on:
   schedule:
-    - cron: '0 14 * * *'  # 10 AM ET daily
+    - cron: '0 9 * * *'  # 9 AM UTC daily
   workflow_dispatch:       # Manual trigger for testing
 
 jobs:
