@@ -1,8 +1,8 @@
-// ─── State ───
 var data = null;
 var visaFilter = 'visitor-outside-canada';
 var searchQuery = '';
 var sortMode = 'alpha';
+var maxDays = 1;
 
 var VISA_LABELS = {
   'visitor-outside-canada': 'Visitor',
@@ -11,144 +11,121 @@ var VISA_LABELS = {
   'work': 'Work',
 };
 
-// ─── Helpers ───
-function getSpeedClass(days) {
-  if (days === null || days === undefined) return 'days-na';
-  if (days <= 14) return 'speed-fast';
-  if (days <= 30) return 'speed-moderate';
-  if (days <= 60) return 'speed-slow';
-  return 'speed-very-slow';
+function speedClass(d) {
+  if (typeof d !== 'number') return 'c-na';
+  if (d <= 14) return 'c-fast';
+  if (d <= 30) return 'c-mod';
+  if (d <= 60) return 'c-slow';
+  return 'c-vslow';
 }
 
-function codeToFlag(code) {
-  if (!code || code.length !== 2) return '';
-  return '<span class="flag-badge">' + code.toUpperCase() + '</span>';
+function bgClass(d) {
+  if (typeof d !== 'number') return '';
+  if (d <= 14) return 'bg-fast';
+  if (d <= 30) return 'bg-mod';
+  if (d <= 60) return 'bg-slow';
+  return 'bg-vslow';
 }
 
-// ─── Render ───
+function getEntries() {
+  if (!data) return [];
+  return Object.entries(data.processing_times)
+    .filter(function(e) {
+      var v = e[1][visaFilter];
+      return v !== null && v !== undefined && typeof v === 'number';
+    })
+    .filter(function(e) {
+      if (!searchQuery) return true;
+      return (e[1].name || '').toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1;
+    })
+    .sort(function(a, b) {
+      if (sortMode === 'fastest') return a[1][visaFilter] - b[1][visaFilter];
+      if (sortMode === 'slowest') return b[1][visaFilter] - a[1][visaFilter];
+      return (a[1].name || a[0]).localeCompare(b[1].name || b[0]);
+    });
+}
+
 function render() {
   if (!data) return;
 
   // Meta
-  var metaEl = document.getElementById('meta');
-  var irccDate = data.ircc_last_updated || 'weekly';
-  var fetchDate = data._meta && data._meta.lastFetched
-    ? new Date(data._meta.lastFetched).toLocaleDateString('en-CA', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
-    : null;
-  metaEl.textContent = 'Official IRCC data \u00b7 Updated ' + irccDate + (fetchDate ? ' \u00b7 Fetched ' + fetchDate : '');
+  var ircc = data.ircc_last_updated || '';
+  var fetched = data._meta && data._meta.lastFetched
+    ? new Date(data._meta.lastFetched).toLocaleDateString('en-CA', { month: 'short', day: 'numeric' })
+    : '';
+  document.getElementById('meta').textContent = ircc + (fetched ? ' \u00b7 ' + fetched : '');
 
-  // Visa type filters
-  var filtersEl = document.getElementById('filters');
-  filtersEl.innerHTML = Object.entries(VISA_LABELS).map(function(entry) {
-    var key = entry[0], label = entry[1];
-    return '<button class="filter-btn ' + (visaFilter === key ? 'active' : '') + '" data-visa="' + key + '">' + label + '</button>';
+  // Filters
+  var fEl = document.getElementById('filters');
+  fEl.innerHTML = Object.entries(VISA_LABELS).map(function(e) {
+    return '<button class="filter-btn' + (visaFilter === e[0] ? ' active' : '') + '" data-v="' + e[0] + '">' + e[1] + '</button>';
   }).join('');
-
-  filtersEl.querySelectorAll('.filter-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      visaFilter = btn.dataset.visa;
-      render();
-    });
+  fEl.querySelectorAll('.filter-btn').forEach(function(b) {
+    b.addEventListener('click', function() { visaFilter = b.dataset.v; render(); });
   });
 
-  // Sort controls
-  var sortEl = document.getElementById('sort-controls');
-  var sorts = [
-    { key: 'alpha', label: 'A\u2013Z' },
-    { key: 'fastest', label: 'Fastest' },
-    { key: 'slowest', label: 'Slowest' },
-  ];
-  sortEl.innerHTML = sorts.map(function(s) {
-    return '<button class="sort-btn ' + (sortMode === s.key ? 'active' : '') + '" data-sort="' + s.key + '">' + s.label + '</button>';
+  // Sorts
+  var sEl = document.getElementById('sort-controls');
+  var sorts = [['alpha','A\u2013Z'],['fastest','\u25B2'],['slowest','\u25BC']];
+  sEl.innerHTML = sorts.map(function(s) {
+    return '<button class="sort-btn' + (sortMode === s[0] ? ' active' : '') + '" data-s="' + s[0] + '" title="Sort ' + s[0] + '">' + s[1] + '</button>';
   }).join('');
-
-  sortEl.querySelectorAll('.sort-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      sortMode = btn.dataset.sort;
-      render();
-    });
+  sEl.querySelectorAll('.sort-btn').forEach(function(b) {
+    b.addEventListener('click', function() { sortMode = b.dataset.s; render(); });
   });
 
-  // Filter + sort countries
-  var entries = Object.entries(data.processing_times)
-    .filter(function(entry) {
-      var val = entry[1][visaFilter];
-      return val !== null && val !== undefined && typeof val === 'number';
-    })
-    .filter(function(entry) {
-      if (!searchQuery) return true;
-      return (entry[1].name || '').toLowerCase().includes(searchQuery.toLowerCase());
-    })
-    .sort(function(a, b) {
-      if (sortMode === 'fastest') return (a[1][visaFilter]) - (b[1][visaFilter]);
-      if (sortMode === 'slowest') return (b[1][visaFilter]) - (a[1][visaFilter]);
-      return (a[1].name || a[0]).localeCompare(b[1].name || b[0]);
-    });
+  var entries = getEntries();
 
   // Stats
-  var allDays = entries.map(function(entry) { return entry[1][visaFilter]; });
-  var avg = allDays.length ? Math.round(allDays.reduce(function(a, b) { return a + b; }, 0) / allDays.length) : 0;
-  var fastest = entries.length ? entries.reduce(function(a, b) { return a[1][visaFilter] < b[1][visaFilter] ? a : b; }) : null;
-  var slowest = entries.length ? entries.reduce(function(a, b) { return a[1][visaFilter] > b[1][visaFilter] ? a : b; }) : null;
+  var days = entries.map(function(e) { return e[1][visaFilter]; });
+  var avg = days.length ? Math.round(days.reduce(function(a,b){return a+b;},0) / days.length) : 0;
+  var fastest = entries.length ? entries.reduce(function(a,b){return a[1][visaFilter]<b[1][visaFilter]?a:b;}) : null;
+  var slowest = entries.length ? entries.reduce(function(a,b){return a[1][visaFilter]>b[1][visaFilter]?a:b;}) : null;
+  maxDays = slowest ? slowest[1][visaFilter] : 1;
 
   document.getElementById('stats').innerHTML =
-    '<div class="stat"><div class="stat-value" style="color:var(--blue)">' + avg + '<span class="days-unit">d</span></div><div class="stat-label">Average</div></div>' +
-    '<div class="stat"><div class="stat-value" style="color:var(--green)">' + (fastest ? fastest[1][visaFilter] + '<span class="days-unit">d</span>' : '\u2014') + '</div><div class="stat-label">' + (fastest ? fastest[1].name : 'Fastest') + '</div></div>' +
-    '<div class="stat"><div class="stat-value" style="color:var(--red)">' + (slowest ? slowest[1][visaFilter] + '<span class="days-unit">d</span>' : '\u2014') + '</div><div class="stat-label">' + (slowest ? slowest[1].name : 'Slowest') + '</div></div>' +
-    '<div class="stat"><div class="stat-value">' + entries.length + '</div><div class="stat-label">Countries</div></div>';
+    '<div class="tick"><div class="tick-val c-mod">' + avg + 'd</div><div class="tick-label">Avg</div></div>' +
+    '<div class="tick"><div class="tick-val c-fast">' + (fastest ? fastest[1][visaFilter] + 'd' : '\u2014') + '</div><div class="tick-label">' + (fastest ? fastest[1].name : '\u2014') + '</div></div>' +
+    '<div class="tick"><div class="tick-val c-vslow">' + (slowest ? slowest[1][visaFilter] + 'd' : '\u2014') + '</div><div class="tick-label">' + (slowest ? slowest[1].name : '\u2014') + '</div></div>' +
+    '<div class="tick"><div class="tick-val">' + entries.length + '</div><div class="tick-label">Countries</div></div>';
 
-  // Country list
-  var listEl = document.getElementById('list');
-  if (entries.length === 0) {
-    listEl.innerHTML = '<div class="empty">No countries found</div>';
+  // List
+  var lEl = document.getElementById('list');
+  if (!entries.length) {
+    lEl.innerHTML = '<div class="empty">No results</div>';
   } else {
-    listEl.innerHTML = entries.map(function(entry, i) {
-      var code = entry[0], c = entry[1];
-      var days = c[visaFilter];
-      var raw = c.raw ? c.raw[visaFilter] : null;
-      return '<li class="country-row">' +
-        '<span class="rank">' + (i + 1) + '</span>' +
-        '<span class="flag">' + codeToFlag(code) + '</span>' +
-        '<div class="country-info">' +
-          '<div class="country-name">' + (c.name || code) + '</div>' +
-          (raw ? '<div class="country-raw">' + raw + '</div>' : '') +
-        '</div>' +
-        '<div class="days-wrap">' +
-          '<span class="days ' + getSpeedClass(days) + '">' + (typeof days === 'number' ? days : '\u2014') + '</span>' +
-          '<span class="days-unit">days</span>' +
-        '</div>' +
+    lEl.innerHTML = entries.map(function(e) {
+      var code = e[0], c = e[1], d = c[visaFilter];
+      var pct = Math.min(Math.round((d / maxDays) * 100), 100);
+      return '<li class="row">' +
+        '<div class="row-bar ' + bgClass(d) + '" style="width:' + pct + '%"></div>' +
+        '<span class="row-code">' + code + '</span>' +
+        '<span class="row-name">' + (c.name || code) + '</span>' +
+        '<span class="row-days ' + speedClass(d) + '">' + d + '</span>' +
+        '<span class="row-unit">d</span>' +
       '</li>';
     }).join('');
   }
 
-  // Footer
-  document.getElementById('footer').textContent = entries.length + ' countries \u00b7 r/CanadaVisitorVisa';
+  document.getElementById('footer-count').textContent = entries.length + ' countries';
 }
 
-// ─── Events ───
 document.getElementById('search').addEventListener('input', function(e) {
   searchQuery = e.target.value;
   render();
 });
 
-// ─── Init ───
 async function init() {
   try {
     var res = await fetch('/api/data');
     if (res.ok) {
       data = await res.json();
       render();
-    } else if (res.status === 404) {
-      document.getElementById('list').innerHTML = '<div class="empty">No data available yet.<br>Use \u22ef menu \u203a "Load Full IRCC Data" to seed data.</div>';
-      document.getElementById('meta').textContent = 'No data loaded';
     } else {
-      document.getElementById('list').innerHTML = '<div class="empty">Server error (' + res.status + ')</div>';
-      document.getElementById('meta').textContent = 'Error loading data';
+      document.getElementById('list').innerHTML = '<div class="empty">No data available.<br>Use menu to load data.</div>';
     }
   } catch (e) {
-    console.error('Fetch failed:', e);
-    document.getElementById('list').innerHTML = '<div class="empty">Failed to connect to server.</div>';
-    document.getElementById('meta').textContent = 'Connection error';
+    document.getElementById('list').innerHTML = '<div class="empty">Connection error</div>';
   }
 }
 

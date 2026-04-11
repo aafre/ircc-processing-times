@@ -5,37 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="header">
-    <div class="header-top">
-      <div class="header-title">Processing Times</div>
-      <span class="live-badge"><span class="live-dot"></span>LIVE</span>
-    </div>
-    <div class="header-meta" id="meta">Loading official IRCC data...</div>
-    <div class="filters" id="filters"></div>
+
+  <div class="topbar">
+    <span class="topbar-dot"></span>
+    <span class="topbar-title">IRCC Processing Times</span>
+    <span class="topbar-meta" id="meta"></span>
   </div>
 
-  <div class="stats-bar" id="stats">
-    <div class="stat"><div class="stat-value" style="color:var(--text-tertiary)">&mdash;</div><div class="stat-label">Average</div></div>
-    <div class="stat"><div class="stat-value" style="color:var(--text-tertiary)">&mdash;</div><div class="stat-label">Fastest</div></div>
-    <div class="stat"><div class="stat-value" style="color:var(--text-tertiary)">&mdash;</div><div class="stat-label">Slowest</div></div>
-    <div class="stat"><div class="stat-value" style="color:var(--text-tertiary)">&mdash;</div><div class="stat-label">Countries</div></div>
-  </div>
+  <div class="filter-row" id="filters"></div>
 
-  <div class="search-sort-bar">
-    <div class="search-wrap">
-      <span class="search-icon">&#128269;</span>
-      <input class="search-input" id="search" type="text" placeholder="Search countries..." autocomplete="off" spellcheck="false">
-    </div>
+  <div class="ticker" id="stats"></div>
+
+  <div class="toolbar">
+    <input class="search-input" id="search" type="text" placeholder="Search..." autocomplete="off" spellcheck="false">
     <div class="sort-controls" id="sort-controls"></div>
   </div>
 
-  <ul class="country-list" id="list"></ul>
+  <div class="col-header">
+    <span class="col-header-name">Country</span>
+    <span class="col-header-days">Days</span>
+  </div>
 
-  <div class="footer" id="footer">r/CanadaVisitorVisa</div>
+  <ul class="list" id="list"></ul>
+
+  <div class="footer">
+    <span id="footer-count"></span>
+    <span>r/CanadaVisitorVisa</span>
+  </div>
 
 <script src="app.js"></script>
 </body>
