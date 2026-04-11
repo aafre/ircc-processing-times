@@ -5,9 +5,22 @@
   "private": true,
   "license": "BSD-3-Clause",
   "main": "src/main.tsx",
+  "scripts": {
+    "build:server": "vite build --config vite.config.server.ts",
+    "build": "npm run build:server",
+    "dev": "devvit playtest"
+  },
   "devDependencies": {
     "@devvit/public-api": "0.12.17",
     "@devvit/tsconfig": "0.12.17",
-    "typescript": "^6.0.2"
+    "@devvit/web": "0.12.17",
+    "@types/express": "^5.0.6",
+    "express": "^4.21.0",
+    "typescript": "^6.0.2",
+    "vite": "^6.0.0"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.13",
+    "hono": "^4.12.12"
   }
 }

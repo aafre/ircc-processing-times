@@ -1,6 +1,70 @@
 {
+  "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
   "name": "processing-time",
-  "blocks": {
-    "entry": "src/main.tsx"
+  "post": {
+    "dir": "webroot",
+    "entrypoints": {
+      "default": {
+        "entry": "index.html",
+        "height": "tall",
+        "inline": true
+      }
+    }
+  },
+  "server": {
+    "dir": "dist/server",
+    "entry": "index.cjs"
+  },
+  "permissions": {
+    "redis": true,
+    "reddit": {
+      "scope": "moderator"
+    },
+    "http": {
+      "domains": ["raw.githubusercontent.com"]
+    }
+  },
+  "menu": {
+    "items": [
+      {
+        "label": "Create Processing Times Dashboard",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/create-dashboard"
+      },
+      {
+        "label": "Refresh Processing Times Data",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/refresh-data"
+      },
+      {
+        "label": "Seed Data from Wiki Page",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/seed-wiki"
+      },
+      {
+        "label": "Load Full IRCC Data (212 countries)",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/load-data"
+      }
+    ]
+  },
+  "triggers": {
+    "onAppInstall": "/internal/triggers/on-app-install"
+  },
+  "scheduler": {
+    "tasks": {
+      "fetch_processing_times": {
+        "endpoint": "/internal/cron/fetch-data",
+        "cron": "0 15 * * *"
+      }
+    }
+  },
+  "scripts": {
+    "dev": "npx vite build --config vite.config.server.ts --watch",
+    "build": "npx vite build --config vite.config.server.ts"
   }
 }

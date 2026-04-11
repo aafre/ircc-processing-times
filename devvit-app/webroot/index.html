@@ -2,155 +2,259 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
     --bg: #FFFFFF;
-    --bg-card: #F6F7F8;
-    --bg-hover: #EDEFF1;
+    --bg-card: #F8F9FA;
+    --bg-hover: #F0F2F4;
+    --bg-active: #E8EAED;
     --text: #1A1A1B;
-    --text-secondary: #787C7E;
-    --border: #EDEFF1;
+    --text-secondary: #6B7280;
+    --text-tertiary: #9CA3AF;
+    --border: #E5E7EB;
+    --border-light: #F3F4F6;
     --blue: #0079D3;
-    --green: #46D160;
-    --orange: #FF8C00;
-    --red: #FF4500;
-    --live-green: #1A7F37;
-    --font: 'IBM Plex Sans', -apple-system, sans-serif;
-    --mono: 'IBM Plex Mono', monospace;
+    --blue-light: #E8F4FD;
+    --green: #16A34A;
+    --green-light: #DCFCE7;
+    --orange: #EA580C;
+    --orange-light: #FFF7ED;
+    --red: #DC2626;
+    --red-light: #FEF2F2;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+    --radius: 10px;
+    --radius-sm: 6px;
+    --radius-full: 9999px;
+    --font: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono: 'IBM Plex Mono', 'SF Mono', 'Cascadia Code', monospace;
+    --transition: 0.15s ease;
   }
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #1A1A1B;
-      --bg-card: #272729;
-      --bg-hover: #333335;
-      --text: #D7DADC;
-      --text-secondary: #818384;
-      --border: #343536;
+      --bg: #111113;
+      --bg-card: #1C1C1F;
+      --bg-hover: #252528;
+      --bg-active: #2E2E32;
+      --text: #E4E4E7;
+      --text-secondary: #A1A1AA;
+      --text-tertiary: #71717A;
+      --border: #27272A;
+      --border-light: #1F1F23;
+      --blue: #3B9EE8;
+      --blue-light: #172554;
+      --green: #22C55E;
+      --green-light: #14532D;
+      --orange: #F97316;
+      --orange-light: #431407;
+      --red: #EF4444;
+      --red-light: #450A0A;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.4);
     }
+  }
+
+  html, body {
+    height: 100%;
+    overflow: hidden;
   }
 
   body {
     font-family: var(--font);
     background: var(--bg);
     color: var(--text);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
+  /* ─── Header ─── */
   .header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    flex-shrink: 0;
     background: var(--bg);
     border-bottom: 1px solid var(--border);
-    padding: 12px 16px;
+    padding: 14px 16px 12px;
   }
 
   .header-top {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
+    gap: 10px;
+    margin-bottom: 6px;
   }
 
   .header-title {
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
     flex: 1;
   }
 
   .live-badge {
-    background: var(--live-green);
-    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--green-light);
+    color: var(--green);
     font-size: 10px;
     font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 12px;
-    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: var(--radius-full);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
   }
 
   .header-meta {
-    font-size: 11px;
-    color: var(--text-secondary);
-    margin-bottom: 10px;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-bottom: 12px;
   }
 
   .filters {
     display: flex;
     gap: 6px;
-    flex-wrap: wrap;
-    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
   }
+
+  .filters::-webkit-scrollbar { display: none; }
 
   .filter-btn {
     font-family: var(--font);
     font-size: 12px;
-    font-weight: 500;
-    padding: 5px 12px;
-    border-radius: 20px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
     border: 1.5px solid var(--border);
     background: transparent;
     color: var(--text-secondary);
     cursor: pointer;
-    transition: all 0.15s;
+    transition: all var(--transition);
+    white-space: nowrap;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .filter-btn:hover { border-color: var(--blue); color: var(--blue); }
+  .filter-btn:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+    background: var(--blue-light);
+  }
+
+  .filter-btn:active { transform: scale(0.96); }
 
   .filter-btn.active {
     background: var(--blue);
     border-color: var(--blue);
     color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 121, 211, 0.25);
   }
 
-  .share-btn {
-    margin-left: auto;
-    font-family: var(--font);
-    font-size: 12px;
-    font-weight: 600;
-    padding: 5px 14px;
-    border-radius: 20px;
-    border: 1.5px solid var(--blue);
-    background: transparent;
-    color: var(--blue);
-    cursor: pointer;
-  }
-
-  .share-btn:hover { background: var(--blue); color: #fff; }
-
+  /* ─── Stats Bar ─── */
   .stats-bar {
-    display: flex;
+    flex-shrink: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 1px;
     background: var(--border);
-    margin: 0;
+    border-bottom: 1px solid var(--border);
   }
 
   .stat {
-    flex: 1;
     background: var(--bg-card);
-    padding: 10px 8px;
+    padding: 12px 6px;
     text-align: center;
+    transition: background var(--transition);
   }
 
   .stat-value {
     font-family: var(--mono);
     font-size: 18px;
     font-weight: 700;
+    line-height: 1.2;
   }
 
   .stat-label {
     font-size: 10px;
-    color: var(--text-secondary);
-    margin-top: 2px;
+    color: var(--text-tertiary);
+    margin-top: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
+  /* ─── Search Bar ─── */
+  .search-bar {
+    flex-shrink: 0;
+    padding: 10px 16px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .search-wrap {
+    position: relative;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-tertiary);
+    pointer-events: none;
+    font-size: 14px;
+  }
+
+  .search-input {
+    width: 100%;
+    font-family: var(--font);
+    font-size: 13px;
+    padding: 9px 12px 9px 36px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    color: var(--text);
+    outline: none;
+    transition: all var(--transition);
+  }
+
+  .search-input:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(0, 121, 211, 0.1);
+  }
+
+  .search-input::placeholder { color: var(--text-tertiary); }
+
+  /* ─── Country List ─── */
   .country-list {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
     list-style: none;
   }
 
@@ -158,229 +262,195 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 10px 16px;
-    border-bottom: 1px solid var(--border);
-    transition: background 0.1s;
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border-light);
+    transition: background var(--transition);
+    -webkit-tap-highlight-color: transparent;
   }
 
   .country-row:hover { background: var(--bg-hover); }
+  .country-row:active { background: var(--bg-active); }
 
   .rank {
     font-family: var(--mono);
     font-size: 11px;
-    color: var(--text-secondary);
-    width: 24px;
+    color: var(--text-tertiary);
+    width: 22px;
     text-align: right;
     flex-shrink: 0;
   }
 
   .flag {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 1;
     flex-shrink: 0;
+  }
+
+  .flag-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 22px;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    background: var(--bg-hover);
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+
+  .country-info {
+    flex: 1;
+    min-width: 0;
   }
 
   .country-name {
     font-size: 14px;
     font-weight: 500;
-    flex: 1;
-    min-width: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
+  .country-raw {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    margin-top: 1px;
+  }
+
+  .days-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
+    flex-shrink: 0;
+  }
+
   .days {
     font-family: var(--mono);
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 700;
-    flex-shrink: 0;
   }
 
   .days-unit {
     font-family: var(--font);
     font-size: 11px;
     font-weight: 400;
-    color: var(--text-secondary);
-    margin-left: 2px;
+    color: var(--text-tertiary);
   }
 
-  .days-na { color: var(--text-secondary); }
+  .days-na { color: var(--text-tertiary); }
   .speed-fast { color: var(--green); }
   .speed-moderate { color: var(--blue); }
   .speed-slow { color: var(--orange); }
   .speed-very-slow { color: var(--red); }
 
-  .search-bar {
-    padding: 8px 16px;
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .search-input {
-    width: 100%;
-    font-family: var(--font);
-    font-size: 13px;
-    padding: 8px 12px;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    background: var(--bg-card);
-    color: var(--text);
-    outline: none;
-  }
-
-  .search-input:focus { border-color: var(--blue); }
-  .search-input::placeholder { color: var(--text-secondary); }
-
+  /* ─── Footer ─── */
   .footer {
+    flex-shrink: 0;
     padding: 10px 16px;
     text-align: center;
     font-size: 11px;
-    color: var(--text-secondary);
+    color: var(--text-tertiary);
     border-top: 1px solid var(--border);
+    background: var(--bg);
   }
 
+  /* ─── Empty / Loading States ─── */
   .empty {
-    padding: 40px 16px;
+    padding: 48px 24px;
     text-align: center;
     color: var(--text-secondary);
-    font-size: 13px;
+    font-size: 14px;
+  }
+
+  .loading-skeleton {
+    padding: 0;
+  }
+
+  .skeleton-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .skeleton-block {
+    background: var(--bg-hover);
+    border-radius: var(--radius-sm);
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 380px) {
+    .header { padding: 12px 12px 10px; }
+    .header-title { font-size: 15px; }
+    .search-bar { padding: 8px 12px; }
+    .country-row { padding: 10px 12px; gap: 8px; }
+    .stat-value { font-size: 16px; }
+    .filter-btn { padding: 5px 10px; font-size: 11px; }
+  }
+
+  @media (min-width: 500px) {
+    .header { padding: 16px 20px 14px; }
+    .search-bar { padding: 12px 20px; }
+    .country-row { padding: 12px 20px; }
+    .stat { padding: 14px 10px; }
+    .stat-value { font-size: 20px; }
+    .footer { padding: 12px 20px; }
+  }
+
+  @media (min-width: 700px) {
+    .header { padding: 18px 24px 16px; }
+    .header-title { font-size: 19px; }
+    .search-bar { padding: 12px 24px; }
+    .country-row { padding: 13px 24px; gap: 16px; }
+    .country-name { font-size: 15px; }
+    .days { font-size: 19px; }
+    .stat { padding: 16px 12px; }
+    .stat-value { font-size: 22px; }
   }
 </style>
 </head>
 <body>
   <div class="header">
     <div class="header-top">
-      <div class="header-title">🇨🇦 Processing Times</div>
-      <span class="live-badge">● LIVE</span>
+      <div class="header-title">Processing Times</div>
+      <span class="live-badge"><span class="live-dot"></span>LIVE</span>
     </div>
-    <div class="header-meta" id="meta"></div>
+    <div class="header-meta" id="meta">Loading official IRCC data...</div>
     <div class="filters" id="filters"></div>
   </div>
 
-  <div class="stats-bar" id="stats"></div>
-
-  <div class="search-bar">
-    <input class="search-input" id="search" type="text" placeholder="Search countries..." autocomplete="off">
+  <div class="stats-bar" id="stats">
+    <div class="stat"><div class="stat-value" style="color:var(--text-tertiary)">—</div><div class="stat-label">Average</div></div>
+    <div class="stat"><div class="stat-value" style="color:var(--text-tertiary)">—</div><div class="stat-label">Fastest</div></div>
+    <div class="stat"><div class="stat-value" style="color:var(--text-tertiary)">—</div><div class="stat-label">Slowest</div></div>
+    <div class="stat"><div class="stat-value" style="color:var(--text-tertiary)">—</div><div class="stat-label">Countries</div></div>
   </div>
 
-  <ul class="country-list" id="list"></ul>
+  <div class="search-bar">
+    <div class="search-wrap">
+      <span class="search-icon">&#128269;</span>
+      <input class="search-input" id="search" type="text" placeholder="Search countries..." autocomplete="off" spellcheck="false">
+    </div>
+  </div>
 
-  <div class="footer" id="footer"></div>
+  <ul class="country-list" id="list">
+    <div class="loading-skeleton" id="skeleton"></div>
+  </ul>
 
-<script>
-  // State
-  let data = null;
-  let visaFilter = 'visitor-outside-canada';
-  let searchQuery = '';
+  <div class="footer" id="footer">r/CanadaVisitorVisa</div>
 
-  const VISA_LABELS = {
-    'visitor-outside-canada': 'Visitor',
-    'supervisa': 'Super Visa',
-    'study': 'Study',
-    'work': 'Work',
-  };
-
-  function getSpeedClass(days) {
-    if (days === null || days === undefined) return 'days-na';
-    if (days <= 14) return 'speed-fast';
-    if (days <= 30) return 'speed-moderate';
-    if (days <= 60) return 'speed-slow';
-    return 'speed-very-slow';
-  }
-
-  function render() {
-    if (!data) return;
-
-    // Meta
-    document.getElementById('meta').textContent =
-      `Official IRCC data · Updated ${data.ircc_last_updated || 'weekly'}`;
-
-    // Filters
-    const filtersEl = document.getElementById('filters');
-    filtersEl.innerHTML = Object.entries(VISA_LABELS).map(([key, label]) =>
-      `<button class="filter-btn ${visaFilter === key ? 'active' : ''}" data-key="${key}">${label}</button>`
-    ).join('') + '<button class="share-btn" id="shareBtn">Share Timeline</button>';
-
-    filtersEl.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        visaFilter = btn.dataset.key;
-        render();
-      });
-    });
-
-    document.getElementById('shareBtn').addEventListener('click', () => {
-      window.parent.postMessage({ type: 'showForm' }, '*');
-    });
-
-    // Filter + sort countries
-    const entries = Object.entries(data.processing_times)
-      .filter(([_, c]) => {
-        const val = c[visaFilter];
-        return val !== null && val !== undefined && typeof val === 'number';
-      })
-      .filter(([_, c]) => {
-        if (!searchQuery) return true;
-        return (c.name || '').toLowerCase().includes(searchQuery.toLowerCase());
-      })
-      .sort((a, b) => (a[1].name || a[0]).localeCompare(b[1].name || b[0]));
-
-    // Stats
-    const allDays = entries.map(([_, c]) => c[visaFilter]);
-    const avg = allDays.length ? Math.round(allDays.reduce((a, b) => a + b, 0) / allDays.length) : 0;
-    const fastest = entries.length ? entries.reduce((a, b) => a[1][visaFilter] < b[1][visaFilter] ? a : b) : null;
-    const slowest = entries.length ? entries.reduce((a, b) => a[1][visaFilter] > b[1][visaFilter] ? a : b) : null;
-
-    document.getElementById('stats').innerHTML = `
-      <div class="stat"><div class="stat-value" style="color:var(--blue)">${avg}d</div><div class="stat-label">Average</div></div>
-      <div class="stat"><div class="stat-value" style="color:var(--green)">${fastest ? fastest[1][visaFilter] + 'd' : '—'}</div><div class="stat-label">${fastest ? fastest[1].name : '—'}</div></div>
-      <div class="stat"><div class="stat-value" style="color:var(--red)">${slowest ? slowest[1][visaFilter] + 'd' : '—'}</div><div class="stat-label">${slowest ? slowest[1].name : '—'}</div></div>
-      <div class="stat"><div class="stat-value">${entries.length}</div><div class="stat-label">Countries</div></div>
-    `;
-
-    // Country list
-    const listEl = document.getElementById('list');
-    if (entries.length === 0) {
-      listEl.innerHTML = '<div class="empty">No countries found</div>';
-    } else {
-      listEl.innerHTML = entries.map(([code, c], i) => {
-        const days = c[visaFilter];
-        const flag = code.length === 2 ? String.fromCodePoint(...[...code.toUpperCase()].map(c => 0x1F1E6 + c.charCodeAt(0) - 65)) : '';
-        return `<li class="country-row">
-          <span class="rank">${i + 1}</span>
-          <span class="flag">${flag}</span>
-          <span class="country-name">${c.name || code}</span>
-          <span class="days ${getSpeedClass(days)}">${typeof days === 'number' ? days : '—'}<span class="days-unit">days</span></span>
-        </li>`;
-      }).join('');
-    }
-
-    // Footer
-    document.getElementById('footer').textContent =
-      `${entries.length} countries · r/CanadaVisitorVisa`;
-  }
-
-  // Search
-  document.getElementById('search').addEventListener('input', (e) => {
-    searchQuery = e.target.value;
-    render();
-  });
-
-  // Listen for data from Devvit
-  window.addEventListener('message', (ev) => {
-    const msg = ev.data;
-    // Devvit sends: { type: 'devvit-message', data: { message: ... } }
-    if (msg?.type === 'devvit-message') {
-      const inner = msg.data?.message;
-      if (inner?.type === 'initialData') {
-        data = inner.data;
-        render();
-      }
-    }
-  });
-
-  // Tell Devvit we're ready — the client bridge wraps this automatically
-  window.parent.postMessage({ type: 'ready' }, '*');
-</script>
+<script src="app.js"></script>
 </body>
 </html>
