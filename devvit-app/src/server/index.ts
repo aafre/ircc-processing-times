@@ -66,10 +66,14 @@ app.get('/api/data', async (c) => {
     if (!raw) {
       return c.json({ error: 'No data available' }, 404);
     }
-    const meta = await redis.get(REDIS_KEY_META);
+    const [meta, prev] = await Promise.all([
+      redis.get(REDIS_KEY_META),
+      redis.get('processing_times:previous'),
+    ]);
     return c.json({
       ...JSON.parse(raw),
       _meta: meta ? JSON.parse(meta) : null,
+      _previous: prev ? JSON.parse(prev).processing_times : null,
     });
   } catch (err) {
     console.error('GET /api/data error:', err);

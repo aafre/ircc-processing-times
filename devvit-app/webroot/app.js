@@ -1,9 +1,10 @@
 // ─── State ───
-let data = null;
-let visaFilter = 'visitor-outside-canada';
-let searchQuery = '';
+var data = null;
+var visaFilter = 'visitor-outside-canada';
+var searchQuery = '';
+var sortMode = 'alpha';
 
-const VISA_LABELS = {
+var VISA_LABELS = {
   'visitor-outside-canada': 'Visitor',
   'supervisa': 'Super Visa',
   'study': 'Study',
@@ -21,8 +22,6 @@ function getSpeedClass(days) {
 
 function codeToFlag(code) {
   if (!code || code.length !== 2) return '';
-  // Regional indicator emoji don't render in Devvit's webview,
-  // so use a styled country code badge instead
   return '<span class="flag-badge">' + code.toUpperCase() + '</span>';
 }
 
@@ -31,23 +30,41 @@ function render() {
   if (!data) return;
 
   // Meta
-  const metaEl = document.getElementById('meta');
-  const irccDate = data.ircc_last_updated || 'weekly';
-  const fetchDate = data._meta && data._meta.lastFetched
+  var metaEl = document.getElementById('meta');
+  var irccDate = data.ircc_last_updated || 'weekly';
+  var fetchDate = data._meta && data._meta.lastFetched
     ? new Date(data._meta.lastFetched).toLocaleDateString('en-CA', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
     : null;
   metaEl.textContent = 'Official IRCC data \u00b7 Updated ' + irccDate + (fetchDate ? ' \u00b7 Fetched ' + fetchDate : '');
 
-  // Filters
+  // Visa type filters
   var filtersEl = document.getElementById('filters');
   filtersEl.innerHTML = Object.entries(VISA_LABELS).map(function(entry) {
     var key = entry[0], label = entry[1];
-    return '<button class="filter-btn ' + (visaFilter === key ? 'active' : '') + '" data-key="' + key + '">' + label + '</button>';
+    return '<button class="filter-btn ' + (visaFilter === key ? 'active' : '') + '" data-visa="' + key + '">' + label + '</button>';
   }).join('');
 
   filtersEl.querySelectorAll('.filter-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
-      visaFilter = btn.dataset.key;
+      visaFilter = btn.dataset.visa;
+      render();
+    });
+  });
+
+  // Sort controls
+  var sortEl = document.getElementById('sort-controls');
+  var sorts = [
+    { key: 'alpha', label: 'A\u2013Z' },
+    { key: 'fastest', label: 'Fastest' },
+    { key: 'slowest', label: 'Slowest' },
+  ];
+  sortEl.innerHTML = sorts.map(function(s) {
+    return '<button class="sort-btn ' + (sortMode === s.key ? 'active' : '') + '" data-sort="' + s.key + '">' + s.label + '</button>';
+  }).join('');
+
+  sortEl.querySelectorAll('.sort-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      sortMode = btn.dataset.sort;
       render();
     });
   });
@@ -63,6 +80,8 @@ function render() {
       return (entry[1].name || '').toLowerCase().includes(searchQuery.toLowerCase());
     })
     .sort(function(a, b) {
+      if (sortMode === 'fastest') return (a[1][visaFilter]) - (b[1][visaFilter]);
+      if (sortMode === 'slowest') return (b[1][visaFilter]) - (a[1][visaFilter]);
       return (a[1].name || a[0]).localeCompare(b[1].name || b[0]);
     });
 
