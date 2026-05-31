@@ -502,5 +502,14 @@
     "study": 42,
     "supervisa": null,
     "work": 56
+  },
+  {
+    "date": "2026-05-31",
+    "child_adopted": 600,
+    "child_dependent": 630,
+    "refugees_gov": null,
+    "study": 42,
+    "supervisa": null,
+    "work": 56
   }
 ]
