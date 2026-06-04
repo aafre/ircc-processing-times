@@ -598,5 +598,15 @@
     "supervisa": 71,
     "visitor": 17,
     "work": 28
+  },
+  {
+    "date": "2026-06-04",
+    "child_adopted": null,
+    "child_dependent": 690,
+    "refugees_gov": null,
+    "study": null,
+    "supervisa": 73,
+    "visitor": 17,
+    "work": 28
   }
 ]
