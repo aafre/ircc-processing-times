@@ -844,5 +844,14 @@
     "study": 49,
     "supervisa": null,
     "work": 42
+  },
+  {
+    "date": "2026-07-09",
+    "child_adopted": 600,
+    "child_dependent": 540,
+    "refugees_gov": null,
+    "study": 49,
+    "supervisa": null,
+    "work": 42
   }
 ]
