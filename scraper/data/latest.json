@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-16T10:52:03.183548+00:00",
+  "last_updated": "2026-07-17T10:40:58.889786+00:00",
   "ircc_last_updated": "July 15, 2026",
   "processing_times": {
     "AF": {
@@ -3252,7 +3252,7 @@
       "refugees_gov": null
     },
     "KR": {
-      "name": "South Korea",
+      "name": "Republic of Korea",
       "raw": {
         "visitor-outside-canada": "48 days",
         "supervisa": "No processing time available",
