@@ -22,6 +22,7 @@ debug_ircc.png
 
 # Reddit snapshots (not part of the app)
 *.txt
+!website/public/robots.txt
 
 # Claude
 .claude/

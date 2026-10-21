@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://canadavisatracker.com/sitemap-index.xml

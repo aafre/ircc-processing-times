@@ -7,7 +7,7 @@ interface Props {
 }
 
 const { title, description, canonical, jsonLd } = Astro.props;
-const siteUrl = 'https://ircc-times.com';
+const siteUrl = Astro.site!.origin;
 const canonicalUrl = canonical ? `${siteUrl}${canonical}` : Astro.url.href;
 ---
 
