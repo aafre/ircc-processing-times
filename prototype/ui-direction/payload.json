@@ -1,0 +1,97 @@
+{
+  "title": "Choose the visual world — Canada Visa Tracker",
+  "question": "The roll assigned The Day Leaf (wall calendar). Keep it, take an alternate, or re-roll. Sketches show the India country page on a phone.",
+  "options": [
+    {
+      "id": "assigned", "kind": "assigned", "label": "The Day Leaf", "kicker": "THE ROLL",
+      "lineage": "tear-off shop wall calendars (India, Nigeria, Philippines households)",
+      "thesis": "The wait is a number of days, so the page is a calendar leaf.",
+      "palette": ["#fbfaf6", "#17171a", "#1f6f5c", "#c8372d", "#e9e4d6"],
+      "materials": ["newsprint leaf", "condensed numerals", "sponsor strip"],
+      "viewport": "Country + type tabs, then a leaf: the day count huge, 'apply today → decision around 19 Nov', the sponsor strip at the leaf's foot; below, history as a month grid with each day's published wait.",
+      "risk": "Calendar red reads as alarm unless red stays on Sundays only.",
+      "raised": [
+        {"from": "challenger-saville", "raise": "Every number is stated once on the page; nothing labelled twice."},
+        {"from": "challenger-orienteering", "raise": "One reserved ink (green) marks only the visitor's own date and country."},
+        {"from": "challenger-crouwel", "raise": "Layout snaps to the month grid's 7-column cell module."},
+        {"from": "challenger-ikeda", "raise": "All figures in tabular numerals on one aligned column system."}
+      ],
+      "html": ".impeccable/mocks/decision/assigned.html", "htmlFrame": "390x844"
+    },
+    {
+      "id": "model-pick", "kind": "pick", "label": "The Forecast", "kicker": "IMPECCABLE’S PICK",
+      "lineage": "newspaper weather pages",
+      "thesis": "A processing time is a forecast: an estimate, a range, an outlook.",
+      "palette": ["#eaf2f8", "#0e2a3f", "#3b82b6", "#f2b84b", "#ffffff"],
+      "materials": ["forecast panels", "temperature-style trend line"],
+      "viewport": "The day count as today's 'high', a 'steady / rising' outlook line, and a 26-week trend drawn like a temperature graph.",
+      "risk": "Familiar: where most runs in this category land; the weather costume can trivialise a visa.",
+      "html": ".impeccable/mocks/decision/model-pick.html", "htmlFrame": "390x844"
+    },
+    {
+      "id": "challenger-transit", "kind": "challenger", "catalogId": "wayfinding-cartography-signage-midnight-transit-diagram",
+      "label": "The Route Map", "verdict": "competitive",
+      "lineage": "metro line diagrams on midnight enamel",
+      "thesis": "Your application is a journey; the four visa types are four lines.",
+      "palette": ["#0f1d3a", "#f4f1ea", "#d9483b", "#2f6fd6", "#e8a92a", "#2f9e6a"],
+      "materials": ["enamel ground", "45° line work", "interchange circles"],
+      "viewport": "A line from Applied to Decision with day ticks as stations; the visitor line brightest, the others dimmed.",
+      "case": "Wins audience identification (migration as a journey); loses on clarity, since IRCC publishes one total, not stages.",
+      "risk": "Implies stages we don't have data for; dark-first fights the daylight scene.",
+      "html": ".impeccable/mocks/decision/challenger-transit.html", "htmlFrame": "390x844"
+    },
+    {
+      "id": "challenger-dense", "kind": "challenger", "catalogId": "japanese-high-density-web",
+      "label": "The Dense Board", "verdict": "competitive",
+      "lineage": "Japanese high-density portals",
+      "thesis": "All four visa types, peers and trend tiled in one packed screen.",
+      "palette": ["#ffffff", "#111111", "#1d5fb8", "#e6e8eb", "#f4f6f8"],
+      "materials": ["hairline modules", "small header tabs"],
+      "viewport": "Ruled modules: visitor figure, three other types, trend, peers, sponsor module, all above the fold.",
+      "case": "Wins clarity for the 212-country hub and ad modules; loses identification. Utility red translated to blue (no-alarm commitment).",
+      "risk": "Tiny type hurts second-language readers on phones.",
+      "html": ".impeccable/mocks/decision/challenger-dense.html", "htmlFrame": "390x844"
+    },
+    {
+      "id": "challenger-saville", "kind": "challenger", "catalogId": "brand-identity-canon-saville-catalog-sleeve",
+      "label": "Catalog Sleeve", "verdict": "declined", "lineage": "Factory Records sleeves",
+      "thesis": "Coded, unlabelled, black.", "palette": ["#0b0b0b", "#ffffff"], "materials": ["matte black", "hairline plot"],
+      "viewport": "A pulse plot of history on black.", "risk": "Coded labels fail anxious readers.",
+      "case": "Fuses poorly: decoding is the opposite of a plain answer.", "kept": "Nothing labelled twice."
+    },
+    {
+      "id": "challenger-orienteering", "kind": "challenger", "catalogId": "notation-diagram-systems-orienteering-map",
+      "label": "Orienteering Map", "verdict": "declined", "lineage": "ISOM orienteering maps",
+      "thesis": "Terrain fixed, your course in purple.", "palette": ["#ffffff", "#7a3b9b", "#a0632e", "#f5d64c"], "materials": ["contours", "course overprint"],
+      "viewport": "Countries as terrain.", "risk": "Map literacy is niche.",
+      "case": "Fuses poorly: no geography in the job.", "kept": "One reserved colour only for 'you'."
+    },
+    {
+      "id": "challenger-crouwel", "kind": "challenger", "catalogId": "crouwel-grid-specimen",
+      "label": "Grid Specimen", "verdict": "declined", "lineage": "Wim Crouwel posters",
+      "thesis": "Numbers built on a visible grid.", "palette": ["#ffffff", "#9fc3e6", "#111111"], "materials": ["construction grid"],
+      "viewport": "Grid-built day count.", "risk": "Poster, not a product.",
+      "case": "Fuses poorly for a lookup task.", "kept": "A single cell module governs layout."
+    },
+    {
+      "id": "challenger-ikeda", "kind": "challenger", "catalogId": "ikeda-datamatics",
+      "label": "Datamatics", "verdict": "declined", "lineage": "Ryoji Ikeda installations",
+      "thesis": "History as a barcode field.", "palette": ["#000000", "#ffffff"], "materials": ["bar fields", "mono numerics"],
+      "viewport": "Barcode of daily values.", "risk": "Strobing, cold, alarming.",
+      "case": "Fuses poorly: cold and alarming.", "kept": "One tabular-figure numeric system."
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code"},
+  "canon": true,
+  "canonCard": {
+    "kind": "canon", "label": "The category standard",
+    "thesis": "A clean data-tracker site, executed impeccably.",
+    "palette": ["#ffffff", "#111827", "#2563eb", "#f3f4f6"],
+    "materials": ["clean grid", "cards", "line chart"],
+    "viewport": "Search, big number card, type cards, line chart, table.",
+    "risk": "Indistinguishable from the competition by design.",
+    "html": ".impeccable/mocks/decision/canon.html", "htmlFrame": "390x844"
+  },
+  "steer": true
+}
