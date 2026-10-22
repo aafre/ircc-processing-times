@@ -25,6 +25,9 @@ const chartData = JSON.stringify(history);
 </div>
 
 <script>
+  // Static import: Astro bundles it into the page CSS. A dynamic import() 404s in production builds.
+  import 'uplot/dist/uPlot.min.css';
+
   async function initChart() {
     const el = document.getElementById('history-chart');
     if (!el) return;
@@ -33,8 +36,6 @@ const chartData = JSON.stringify(history);
     if (history.length < 2) return;
 
     const uPlot = (await import('uplot')).default;
-    // @ts-ignore - CSS import
-    await import('uplot/dist/uPlot.min.css');
 
     const dates = history.map((e: any) => new Date(e.date).getTime() / 1000);
     const visitor = history.map((e: any) => e.visitor);
