@@ -1978,5 +1978,15 @@
     "supervisa": null,
     "visitor": 63,
     "work": null
+  },
+  {
+    "date": "2026-10-22",
+    "child_adopted": null,
+    "child_dependent": null,
+    "refugees_gov": 1800,
+    "study": 63,
+    "supervisa": null,
+    "visitor": 63,
+    "work": null
   }
 ]

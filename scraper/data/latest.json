@@ -1,11 +1,11 @@
 {
-  "last_updated": "2026-10-21T14:16:56.779408+00:00",
-  "ircc_last_updated": "October 14, 2026",
+  "last_updated": "2026-10-22T14:19:29.121073+00:00",
+  "ircc_last_updated": "October 21, 2026",
   "processing_times": {
     "AF": {
       "name": "Afghanistan",
       "raw": {
-        "visitor-outside-canada": "42 days",
+        "visitor-outside-canada": "44 days",
         "supervisa": "No processing time available",
         "study": "3 weeks",
         "work": "No processing time available",
@@ -13,7 +13,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 42,
+      "visitor-outside-canada": 44,
       "supervisa": null,
       "study": 21,
       "work": null,
@@ -24,7 +24,7 @@
     "AL": {
       "name": "Albania",
       "raw": {
-        "visitor-outside-canada": "42 days",
+        "visitor-outside-canada": "41 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -32,7 +32,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 42,
+      "visitor-outside-canada": 41,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -43,16 +43,16 @@
     "DZ": {
       "name": "Algeria",
       "raw": {
-        "visitor-outside-canada": "22 days",
-        "supervisa": "57 days",
+        "visitor-outside-canada": "23 days",
+        "supervisa": "51 days",
         "study": "7 weeks",
         "work": "12 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 22,
-      "supervisa": 57,
+      "visitor-outside-canada": 23,
+      "supervisa": 51,
       "study": 49,
       "work": 84,
       "child_dependent": null,
@@ -119,7 +119,7 @@
     "AG": {
       "name": "Antigua and Barbuda",
       "raw": {
-        "visitor-outside-canada": "29 days",
+        "visitor-outside-canada": "28 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -127,7 +127,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 29,
+      "visitor-outside-canada": 28,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -157,7 +157,7 @@
     "AM": {
       "name": "Armenia",
       "raw": {
-        "visitor-outside-canada": "10 days",
+        "visitor-outside-canada": "11 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -165,7 +165,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 10,
+      "visitor-outside-canada": 11,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -195,16 +195,16 @@
     "AU": {
       "name": "Australia",
       "raw": {
-        "visitor-outside-canada": "7 days",
-        "supervisa": "No processing time available",
+        "visitor-outside-canada": "8 days",
+        "supervisa": "60 days",
         "study": "3 weeks",
         "work": "7 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 7,
-      "supervisa": null,
+      "visitor-outside-canada": 8,
+      "supervisa": 60,
       "study": 21,
       "work": 49,
       "child_dependent": null,
@@ -216,7 +216,7 @@
       "raw": {
         "visitor-outside-canada": "38 days",
         "supervisa": "No processing time available",
-        "study": "5 weeks",
+        "study": "No processing time available",
         "work": "No processing time available",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
@@ -224,7 +224,7 @@
       },
       "visitor-outside-canada": 38,
       "supervisa": null,
-      "study": 35,
+      "study": null,
       "work": null,
       "child_dependent": null,
       "child_adopted": null,
@@ -252,7 +252,7 @@
     "BS": {
       "name": "Bahamas",
       "raw": {
-        "visitor-outside-canada": "31 days",
+        "visitor-outside-canada": "32 days",
         "supervisa": "No processing time available",
         "study": "4 weeks",
         "work": "No processing time available",
@@ -260,7 +260,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 31,
+      "visitor-outside-canada": 32,
       "supervisa": null,
       "study": 28,
       "work": null,
@@ -290,18 +290,18 @@
     "BD": {
       "name": "Bangladesh",
       "raw": {
-        "visitor-outside-canada": "34 days",
-        "supervisa": "53 days",
-        "study": "5 weeks",
-        "work": "44 weeks",
+        "visitor-outside-canada": "37 days",
+        "supervisa": "55 days",
+        "study": "6 weeks",
+        "work": "49 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "14 months"
       },
-      "visitor-outside-canada": 34,
-      "supervisa": 53,
-      "study": 35,
-      "work": 308,
+      "visitor-outside-canada": 37,
+      "supervisa": 55,
+      "study": 42,
+      "work": 343,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": 420
@@ -309,7 +309,7 @@
     "BB": {
       "name": "Barbados",
       "raw": {
-        "visitor-outside-canada": "35 days",
+        "visitor-outside-canada": "18 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -317,7 +317,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 35,
+      "visitor-outside-canada": 18,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -328,7 +328,7 @@
     "BY": {
       "name": "Belarus",
       "raw": {
-        "visitor-outside-canada": "19 days",
+        "visitor-outside-canada": "15 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -336,7 +336,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 19,
+      "visitor-outside-canada": 15,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -347,17 +347,17 @@
     "BE": {
       "name": "Belgium",
       "raw": {
-        "visitor-outside-canada": "40 days",
+        "visitor-outside-canada": "39 days",
         "supervisa": "No processing time available",
-        "study": "3 weeks",
+        "study": "4 weeks",
         "work": "2 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 40,
+      "visitor-outside-canada": 39,
       "supervisa": null,
-      "study": 21,
+      "study": 28,
       "work": 14,
       "child_dependent": null,
       "child_adopted": null,
@@ -366,7 +366,7 @@
     "BZ": {
       "name": "Belize",
       "raw": {
-        "visitor-outside-canada": "23 days",
+        "visitor-outside-canada": "20 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -374,7 +374,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 23,
+      "visitor-outside-canada": 20,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -385,7 +385,7 @@
     "BJ": {
       "name": "Benin",
       "raw": {
-        "visitor-outside-canada": "98 days",
+        "visitor-outside-canada": "59 days",
         "supervisa": "No processing time available",
         "study": "17 weeks",
         "work": "No processing time available",
@@ -393,7 +393,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 98,
+      "visitor-outside-canada": 59,
       "supervisa": null,
       "study": 119,
       "work": null,
@@ -423,7 +423,7 @@
     "BT": {
       "name": "Bhutan",
       "raw": {
-        "visitor-outside-canada": "30 days",
+        "visitor-outside-canada": "35 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -431,7 +431,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 30,
+      "visitor-outside-canada": 35,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -442,7 +442,7 @@
     "BO": {
       "name": "Bolivia",
       "raw": {
-        "visitor-outside-canada": "25 days",
+        "visitor-outside-canada": "26 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -450,7 +450,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 25,
+      "visitor-outside-canada": 26,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -499,7 +499,7 @@
     "BW": {
       "name": "Botswana",
       "raw": {
-        "visitor-outside-canada": "570 days",
+        "visitor-outside-canada": "567 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -507,7 +507,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 570,
+      "visitor-outside-canada": 567,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -518,16 +518,16 @@
     "BR": {
       "name": "Brazil",
       "raw": {
-        "visitor-outside-canada": "29 days",
-        "supervisa": "24 days",
+        "visitor-outside-canada": "28 days",
+        "supervisa": "33 days",
         "study": "4 weeks",
         "work": "3 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 29,
-      "supervisa": 24,
+      "visitor-outside-canada": 28,
+      "supervisa": 33,
       "study": 28,
       "work": 21,
       "child_dependent": null,
@@ -575,7 +575,7 @@
     "BG": {
       "name": "Bulgaria",
       "raw": {
-        "visitor-outside-canada": "38 days",
+        "visitor-outside-canada": "34 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -583,7 +583,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 38,
+      "visitor-outside-canada": 34,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -594,7 +594,7 @@
     "BF": {
       "name": "Burkina Faso",
       "raw": {
-        "visitor-outside-canada": "38 days",
+        "visitor-outside-canada": "37 days",
         "supervisa": "No processing time available",
         "study": "5 weeks",
         "work": "No processing time available",
@@ -602,7 +602,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 38,
+      "visitor-outside-canada": 37,
       "supervisa": null,
       "study": 35,
       "work": null,
@@ -632,17 +632,17 @@
     "BI": {
       "name": "Burundi",
       "raw": {
-        "visitor-outside-canada": "87 days",
+        "visitor-outside-canada": "89 days",
         "supervisa": "71 days",
-        "study": "6 weeks",
+        "study": "7 weeks",
         "work": "No processing time available",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 87,
+      "visitor-outside-canada": 89,
       "supervisa": 71,
-      "study": 42,
+      "study": 49,
       "work": null,
       "child_dependent": null,
       "child_adopted": null,
@@ -670,17 +670,17 @@
     "CM": {
       "name": "Cameroon",
       "raw": {
-        "visitor-outside-canada": "45 days",
-        "supervisa": "117 days",
-        "study": "8 weeks",
+        "visitor-outside-canada": "48 days",
+        "supervisa": "118 days",
+        "study": "9 weeks",
         "work": "9 weeks",
         "child_dependent": "31 months",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 45,
-      "supervisa": 117,
-      "study": 56,
+      "visitor-outside-canada": 48,
+      "supervisa": 118,
+      "study": 63,
       "work": 63,
       "child_dependent": 930,
       "child_adopted": null,
@@ -708,7 +708,7 @@
     "KY": {
       "name": "Cayman Islands",
       "raw": {
-        "visitor-outside-canada": "35 days",
+        "visitor-outside-canada": "36 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -716,7 +716,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 35,
+      "visitor-outside-canada": 36,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -748,7 +748,7 @@
       "raw": {
         "visitor-outside-canada": "112 days",
         "supervisa": "No processing time available",
-        "study": "3 weeks",
+        "study": "4 weeks",
         "work": "No processing time available",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
@@ -756,7 +756,7 @@
       },
       "visitor-outside-canada": 112,
       "supervisa": null,
-      "study": 21,
+      "study": 28,
       "work": null,
       "child_dependent": null,
       "child_adopted": null,
@@ -765,18 +765,18 @@
     "CL": {
       "name": "Chile",
       "raw": {
-        "visitor-outside-canada": "27 days",
+        "visitor-outside-canada": "25 days",
         "supervisa": "No processing time available",
         "study": "4 weeks",
-        "work": "5 weeks",
+        "work": "7 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 27,
+      "visitor-outside-canada": 25,
       "supervisa": null,
       "study": 28,
-      "work": 35,
+      "work": 49,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": null
@@ -784,18 +784,18 @@
     "CN": {
       "name": "China (People&rsquo;s Republic of)",
       "raw": {
-        "visitor-outside-canada": "40 days",
-        "supervisa": "85 days",
-        "study": "6 weeks",
-        "work": "4 weeks",
+        "visitor-outside-canada": "42 days",
+        "supervisa": "89 days",
+        "study": "8 weeks",
+        "work": "5 weeks",
         "child_dependent": "13 months",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 40,
-      "supervisa": 85,
-      "study": 42,
-      "work": 28,
+      "visitor-outside-canada": 42,
+      "supervisa": 89,
+      "study": 56,
+      "work": 35,
       "child_dependent": 390,
       "child_adopted": null,
       "refugees_gov": null
@@ -803,7 +803,7 @@
     "CO": {
       "name": "Colombia",
       "raw": {
-        "visitor-outside-canada": "19 days",
+        "visitor-outside-canada": "18 days",
         "supervisa": "70 days",
         "study": "6 weeks",
         "work": "5 weeks",
@@ -811,7 +811,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 19,
+      "visitor-outside-canada": 18,
       "supervisa": 70,
       "study": 42,
       "work": 35,
@@ -843,7 +843,7 @@
       "raw": {
         "visitor-outside-canada": "38 days",
         "supervisa": "No processing time available",
-        "study": "7 weeks",
+        "study": "8 weeks",
         "work": "No processing time available",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
@@ -851,7 +851,7 @@
       },
       "visitor-outside-canada": 38,
       "supervisa": null,
-      "study": 49,
+      "study": 56,
       "work": null,
       "child_dependent": null,
       "child_adopted": null,
@@ -860,7 +860,7 @@
     "CR": {
       "name": "Costa Rica",
       "raw": {
-        "visitor-outside-canada": "20 days",
+        "visitor-outside-canada": "21 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -868,7 +868,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 20,
+      "visitor-outside-canada": 21,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -879,16 +879,16 @@
     "CI": {
       "name": "Côte d&rsquo;Ivoire",
       "raw": {
-        "visitor-outside-canada": "49 days",
-        "supervisa": "35 days",
+        "visitor-outside-canada": "46 days",
+        "supervisa": "37 days",
         "study": "8 weeks",
         "work": "12 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 49,
-      "supervisa": 35,
+      "visitor-outside-canada": 46,
+      "supervisa": 37,
       "study": 56,
       "work": 84,
       "child_dependent": null,
@@ -918,7 +918,7 @@
       "name": "Cuba",
       "raw": {
         "visitor-outside-canada": "22 days",
-        "supervisa": "55 days",
+        "supervisa": "58 days",
         "study": "No processing time available",
         "work": "No processing time available",
         "child_dependent": "No processing time available",
@@ -926,7 +926,7 @@
         "refugees_gov": "Not enough data"
       },
       "visitor-outside-canada": 22,
-      "supervisa": 55,
+      "supervisa": 58,
       "study": null,
       "work": null,
       "child_dependent": null,
@@ -1012,7 +1012,7 @@
     "DJ": {
       "name": "Djibouti",
       "raw": {
-        "visitor-outside-canada": "113 days",
+        "visitor-outside-canada": "112 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -1020,7 +1020,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 113,
+      "visitor-outside-canada": 112,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -1031,7 +1031,7 @@
     "DM": {
       "name": "Dominica",
       "raw": {
-        "visitor-outside-canada": "25 days",
+        "visitor-outside-canada": "20 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -1039,7 +1039,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 25,
+      "visitor-outside-canada": 20,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -1050,17 +1050,17 @@
     "DO": {
       "name": "Dominican Republic",
       "raw": {
-        "visitor-outside-canada": "25 days",
+        "visitor-outside-canada": "27 days",
         "supervisa": "No processing time available",
-        "study": "4 weeks",
+        "study": "5 weeks",
         "work": "No processing time available",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 25,
+      "visitor-outside-canada": 27,
       "supervisa": null,
-      "study": 28,
+      "study": 35,
       "work": null,
       "child_dependent": null,
       "child_adopted": null,
@@ -1069,17 +1069,17 @@
     "EC": {
       "name": "Ecuador",
       "raw": {
-        "visitor-outside-canada": "28 days",
+        "visitor-outside-canada": "27 days",
         "supervisa": "No processing time available",
-        "study": "8 weeks",
+        "study": "7 weeks",
         "work": "7 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 28,
+      "visitor-outside-canada": 27,
       "supervisa": null,
-      "study": 56,
+      "study": 49,
       "work": 49,
       "child_dependent": null,
       "child_adopted": null,
@@ -1088,18 +1088,18 @@
     "EG": {
       "name": "Egypt",
       "raw": {
-        "visitor-outside-canada": "64 days",
-        "supervisa": "43 days",
+        "visitor-outside-canada": "61 days",
+        "supervisa": "39 days",
         "study": "8 weeks",
-        "work": "17 weeks",
+        "work": "8 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "13 months"
       },
-      "visitor-outside-canada": 64,
-      "supervisa": 43,
+      "visitor-outside-canada": 61,
+      "supervisa": 39,
       "study": 56,
-      "work": 119,
+      "work": 56,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": 390
@@ -1164,7 +1164,7 @@
     "EE": {
       "name": "Estonia",
       "raw": {
-        "visitor-outside-canada": "33 days",
+        "visitor-outside-canada": "24 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -1172,7 +1172,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 33,
+      "visitor-outside-canada": 24,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -1183,17 +1183,17 @@
     "ET": {
       "name": "Ethiopia",
       "raw": {
-        "visitor-outside-canada": "132 days",
-        "supervisa": "81 days",
-        "study": "6 weeks",
+        "visitor-outside-canada": "133 days",
+        "supervisa": "109 days",
+        "study": "7 weeks",
         "work": "No processing time available",
         "child_dependent": "20 months",
         "child_adopted": "29 months",
         "refugees_gov": "18 months"
       },
-      "visitor-outside-canada": 132,
-      "supervisa": 81,
-      "study": 42,
+      "visitor-outside-canada": 133,
+      "supervisa": 109,
+      "study": 49,
       "work": null,
       "child_dependent": 600,
       "child_adopted": 870,
@@ -1202,7 +1202,7 @@
     "FJ": {
       "name": "Fiji",
       "raw": {
-        "visitor-outside-canada": "8 days",
+        "visitor-outside-canada": "9 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -1210,7 +1210,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 8,
+      "visitor-outside-canada": 9,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -1221,7 +1221,7 @@
     "FI": {
       "name": "Finland",
       "raw": {
-        "visitor-outside-canada": "30 days",
+        "visitor-outside-canada": "16 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -1229,7 +1229,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 30,
+      "visitor-outside-canada": 16,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -1240,16 +1240,16 @@
     "FR": {
       "name": "France",
       "raw": {
-        "visitor-outside-canada": "38 days",
-        "supervisa": "103 days",
+        "visitor-outside-canada": "37 days",
+        "supervisa": "No processing time available",
         "study": "4 weeks",
         "work": "3 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 38,
-      "supervisa": 103,
+      "visitor-outside-canada": 37,
+      "supervisa": null,
       "study": 28,
       "work": 21,
       "child_dependent": null,
@@ -1258,6 +1258,101 @@
     },
     "GA": {
       "name": "Gabon",
+      "raw": {
+        "visitor-outside-canada": "45 days",
+        "supervisa": "No processing time available",
+        "study": "No processing time available",
+        "work": "No processing time available",
+        "child_dependent": "No processing time available",
+        "child_adopted": "Not enough data",
+        "refugees_gov": "Not enough data"
+      },
+      "visitor-outside-canada": 45,
+      "supervisa": null,
+      "study": null,
+      "work": null,
+      "child_dependent": null,
+      "child_adopted": null,
+      "refugees_gov": null
+    },
+    "GM": {
+      "name": "Gambia",
+      "raw": {
+        "visitor-outside-canada": "59 days",
+        "supervisa": "No processing time available",
+        "study": "4 weeks",
+        "work": "No processing time available",
+        "child_dependent": "No processing time available",
+        "child_adopted": "Not enough data",
+        "refugees_gov": "Not enough data"
+      },
+      "visitor-outside-canada": 59,
+      "supervisa": null,
+      "study": 28,
+      "work": null,
+      "child_dependent": null,
+      "child_adopted": null,
+      "refugees_gov": null
+    },
+    "GE": {
+      "name": "Georgia",
+      "raw": {
+        "visitor-outside-canada": "81 days",
+        "supervisa": "No processing time available",
+        "study": "No processing time available",
+        "work": "No processing time available",
+        "child_dependent": "No processing time available",
+        "child_adopted": "Not enough data",
+        "refugees_gov": "Not enough data"
+      },
+      "visitor-outside-canada": 81,
+      "supervisa": null,
+      "study": null,
+      "work": null,
+      "child_dependent": null,
+      "child_adopted": null,
+      "refugees_gov": null
+    },
+    "DE": {
+      "name": "Germany",
+      "raw": {
+        "visitor-outside-canada": "36 days",
+        "supervisa": "No processing time available",
+        "study": "5 weeks",
+        "work": "7 weeks",
+        "child_dependent": "No processing time available",
+        "child_adopted": "Not enough data",
+        "refugees_gov": "Not enough data"
+      },
+      "visitor-outside-canada": 36,
+      "supervisa": null,
+      "study": 35,
+      "work": 49,
+      "child_dependent": null,
+      "child_adopted": null,
+      "refugees_gov": null
+    },
+    "GH": {
+      "name": "Ghana",
+      "raw": {
+        "visitor-outside-canada": "86 days",
+        "supervisa": "25 days",
+        "study": "8 weeks",
+        "work": "21 weeks",
+        "child_dependent": "No processing time available",
+        "child_adopted": "Not enough data",
+        "refugees_gov": "Not enough data"
+      },
+      "visitor-outside-canada": 86,
+      "supervisa": 25,
+      "study": 56,
+      "work": 147,
+      "child_dependent": null,
+      "child_adopted": null,
+      "refugees_gov": null
+    },
+    "GR": {
+      "name": "Greece",
       "raw": {
         "visitor-outside-canada": "40 days",
         "supervisa": "No processing time available",
@@ -1275,105 +1370,10 @@
       "child_adopted": null,
       "refugees_gov": null
     },
-    "GM": {
-      "name": "Gambia",
-      "raw": {
-        "visitor-outside-canada": "91 days",
-        "supervisa": "No processing time available",
-        "study": "5 weeks",
-        "work": "No processing time available",
-        "child_dependent": "No processing time available",
-        "child_adopted": "Not enough data",
-        "refugees_gov": "Not enough data"
-      },
-      "visitor-outside-canada": 91,
-      "supervisa": null,
-      "study": 35,
-      "work": null,
-      "child_dependent": null,
-      "child_adopted": null,
-      "refugees_gov": null
-    },
-    "GE": {
-      "name": "Georgia",
-      "raw": {
-        "visitor-outside-canada": "79 days",
-        "supervisa": "No processing time available",
-        "study": "No processing time available",
-        "work": "No processing time available",
-        "child_dependent": "No processing time available",
-        "child_adopted": "Not enough data",
-        "refugees_gov": "Not enough data"
-      },
-      "visitor-outside-canada": 79,
-      "supervisa": null,
-      "study": null,
-      "work": null,
-      "child_dependent": null,
-      "child_adopted": null,
-      "refugees_gov": null
-    },
-    "DE": {
-      "name": "Germany",
-      "raw": {
-        "visitor-outside-canada": "36 days",
-        "supervisa": "No processing time available",
-        "study": "3 weeks",
-        "work": "6 weeks",
-        "child_dependent": "No processing time available",
-        "child_adopted": "Not enough data",
-        "refugees_gov": "Not enough data"
-      },
-      "visitor-outside-canada": 36,
-      "supervisa": null,
-      "study": 21,
-      "work": 42,
-      "child_dependent": null,
-      "child_adopted": null,
-      "refugees_gov": null
-    },
-    "GH": {
-      "name": "Ghana",
-      "raw": {
-        "visitor-outside-canada": "87 days",
-        "supervisa": "25 days",
-        "study": "7 weeks",
-        "work": "21 weeks",
-        "child_dependent": "No processing time available",
-        "child_adopted": "Not enough data",
-        "refugees_gov": "Not enough data"
-      },
-      "visitor-outside-canada": 87,
-      "supervisa": 25,
-      "study": 49,
-      "work": 147,
-      "child_dependent": null,
-      "child_adopted": null,
-      "refugees_gov": null
-    },
-    "GR": {
-      "name": "Greece",
-      "raw": {
-        "visitor-outside-canada": "42 days",
-        "supervisa": "No processing time available",
-        "study": "No processing time available",
-        "work": "No processing time available",
-        "child_dependent": "No processing time available",
-        "child_adopted": "Not enough data",
-        "refugees_gov": "Not enough data"
-      },
-      "visitor-outside-canada": 42,
-      "supervisa": null,
-      "study": null,
-      "work": null,
-      "child_dependent": null,
-      "child_adopted": null,
-      "refugees_gov": null
-    },
     "GD": {
       "name": "Grenada",
       "raw": {
-        "visitor-outside-canada": "20 days",
+        "visitor-outside-canada": "19 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -1381,7 +1381,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 20,
+      "visitor-outside-canada": 19,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -1411,7 +1411,7 @@
     "GT": {
       "name": "Guatemala",
       "raw": {
-        "visitor-outside-canada": "22 days",
+        "visitor-outside-canada": "23 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "1 week",
@@ -1419,7 +1419,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 22,
+      "visitor-outside-canada": 23,
       "supervisa": null,
       "study": null,
       "work": 7,
@@ -1431,7 +1431,7 @@
       "name": "Guinea",
       "raw": {
         "visitor-outside-canada": "71 days",
-        "supervisa": "No processing time available",
+        "supervisa": "47 days",
         "study": "6 weeks",
         "work": "No processing time available",
         "child_dependent": "No processing time available",
@@ -1439,7 +1439,7 @@
         "refugees_gov": "Not enough data"
       },
       "visitor-outside-canada": 71,
-      "supervisa": null,
+      "supervisa": 47,
       "study": 42,
       "work": null,
       "child_dependent": null,
@@ -1487,7 +1487,7 @@
     "HT": {
       "name": "Haiti",
       "raw": {
-        "visitor-outside-canada": "24 days",
+        "visitor-outside-canada": "25 days",
         "supervisa": "33 days",
         "study": "3 weeks",
         "work": "5 weeks",
@@ -1495,7 +1495,7 @@
         "child_adopted": "46 months",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 24,
+      "visitor-outside-canada": 25,
       "supervisa": 33,
       "study": 21,
       "work": 35,
@@ -1545,17 +1545,17 @@
       "name": "Hong Kong SAR",
       "raw": {
         "visitor-outside-canada": "21 days",
-        "supervisa": "61 days",
+        "supervisa": "59 days",
         "study": "6 weeks",
-        "work": "14 weeks",
+        "work": "16 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
       "visitor-outside-canada": 21,
-      "supervisa": 61,
+      "supervisa": 59,
       "study": 42,
-      "work": 98,
+      "work": 112,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": null
@@ -1563,7 +1563,7 @@
     "HU": {
       "name": "Hungary",
       "raw": {
-        "visitor-outside-canada": "40 days",
+        "visitor-outside-canada": "41 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -1571,7 +1571,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 40,
+      "visitor-outside-canada": 41,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -1602,17 +1602,17 @@
       "name": "India",
       "raw": {
         "visitor-outside-canada": "29 days",
-        "supervisa": "77 days",
-        "study": "7 weeks",
-        "work": "11 weeks",
+        "supervisa": "83 days",
+        "study": "8 weeks",
+        "work": "10 weeks",
         "child_dependent": "8 months",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
       "visitor-outside-canada": 29,
-      "supervisa": 77,
-      "study": 49,
-      "work": 77,
+      "supervisa": 83,
+      "study": 56,
+      "work": 70,
       "child_dependent": 240,
       "child_adopted": null,
       "refugees_gov": null
@@ -1623,7 +1623,7 @@
         "visitor-outside-canada": "25 days",
         "supervisa": "No processing time available",
         "study": "8 weeks",
-        "work": "15 weeks",
+        "work": "12 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
@@ -1631,7 +1631,7 @@
       "visitor-outside-canada": 25,
       "supervisa": null,
       "study": 56,
-      "work": 105,
+      "work": 84,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": null
@@ -1639,18 +1639,18 @@
     "IR": {
       "name": "Iran",
       "raw": {
-        "visitor-outside-canada": "90 days",
-        "supervisa": "265 days",
-        "study": "16 weeks",
-        "work": "60 weeks",
+        "visitor-outside-canada": "79 days",
+        "supervisa": "231 days",
+        "study": "21 weeks",
+        "work": "57 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 90,
-      "supervisa": 265,
-      "study": 112,
-      "work": 420,
+      "visitor-outside-canada": 79,
+      "supervisa": 231,
+      "study": 147,
+      "work": 399,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": null
@@ -1658,7 +1658,7 @@
     "IQ": {
       "name": "Iraq",
       "raw": {
-        "visitor-outside-canada": "78 days",
+        "visitor-outside-canada": "71 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -1666,7 +1666,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "27 months"
       },
-      "visitor-outside-canada": 78,
+      "visitor-outside-canada": 71,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -1677,17 +1677,17 @@
     "IE": {
       "name": "Ireland",
       "raw": {
-        "visitor-outside-canada": "20 days",
+        "visitor-outside-canada": "22 days",
         "supervisa": "No processing time available",
-        "study": "3 weeks",
+        "study": "No processing time available",
         "work": "No processing time available",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 20,
+      "visitor-outside-canada": 22,
       "supervisa": null,
-      "study": 21,
+      "study": null,
       "work": null,
       "child_dependent": null,
       "child_adopted": null,
@@ -1696,17 +1696,17 @@
     "IL": {
       "name": "Israel",
       "raw": {
-        "visitor-outside-canada": "23 days",
+        "visitor-outside-canada": "33 days",
         "supervisa": "No processing time available",
-        "study": "6 weeks",
+        "study": "No processing time available",
         "work": "5 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 23,
+      "visitor-outside-canada": 33,
       "supervisa": null,
-      "study": 42,
+      "study": null,
       "work": 35,
       "child_dependent": null,
       "child_adopted": null,
@@ -1715,17 +1715,17 @@
     "IT": {
       "name": "Italy",
       "raw": {
-        "visitor-outside-canada": "40 days",
+        "visitor-outside-canada": "41 days",
         "supervisa": "No processing time available",
-        "study": "8 weeks",
+        "study": "5 weeks",
         "work": "9 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 40,
+      "visitor-outside-canada": 41,
       "supervisa": null,
-      "study": 56,
+      "study": 35,
       "work": 63,
       "child_dependent": null,
       "child_adopted": null,
@@ -1734,18 +1734,18 @@
     "JM": {
       "name": "Jamaica",
       "raw": {
-        "visitor-outside-canada": "35 days",
+        "visitor-outside-canada": "39 days",
         "supervisa": "49 days",
-        "study": "2 weeks",
-        "work": "5 weeks",
+        "study": "3 weeks",
+        "work": "7 weeks",
         "child_dependent": "8 months",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 35,
+      "visitor-outside-canada": 39,
       "supervisa": 49,
-      "study": 14,
-      "work": 35,
+      "study": 21,
+      "work": 49,
       "child_dependent": 240,
       "child_adopted": null,
       "refugees_gov": null
@@ -1755,7 +1755,7 @@
       "raw": {
         "visitor-outside-canada": "55 days",
         "supervisa": "No processing time available",
-        "study": "4 weeks",
+        "study": "3 weeks",
         "work": "3 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
@@ -1763,7 +1763,7 @@
       },
       "visitor-outside-canada": 55,
       "supervisa": null,
-      "study": 28,
+      "study": 21,
       "work": 21,
       "child_dependent": null,
       "child_adopted": null,
@@ -1810,16 +1810,16 @@
     "KE": {
       "name": "Kenya",
       "raw": {
-        "visitor-outside-canada": "125 days",
-        "supervisa": "141 days",
+        "visitor-outside-canada": "124 days",
+        "supervisa": "143 days",
         "study": "4 weeks",
         "work": "5 weeks",
         "child_dependent": "17 months",
         "child_adopted": "Not enough data",
         "refugees_gov": "19 months"
       },
-      "visitor-outside-canada": 125,
-      "supervisa": 141,
+      "visitor-outside-canada": 124,
+      "supervisa": 143,
       "study": 28,
       "work": 35,
       "child_dependent": 510,
@@ -1867,7 +1867,7 @@
     "KW": {
       "name": "Kuwait",
       "raw": {
-        "visitor-outside-canada": "63 days",
+        "visitor-outside-canada": "64 days",
         "supervisa": "No processing time available",
         "study": "4 weeks",
         "work": "No processing time available",
@@ -1875,7 +1875,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 63,
+      "visitor-outside-canada": 64,
       "supervisa": null,
       "study": 28,
       "work": null,
@@ -1905,7 +1905,7 @@
     "LA": {
       "name": "Laos",
       "raw": {
-        "visitor-outside-canada": "43 days",
+        "visitor-outside-canada": "42 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -1913,7 +1913,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 43,
+      "visitor-outside-canada": 42,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -1924,7 +1924,7 @@
     "LV": {
       "name": "Latvia",
       "raw": {
-        "visitor-outside-canada": "28 days",
+        "visitor-outside-canada": "27 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -1932,7 +1932,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 28,
+      "visitor-outside-canada": 27,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -1943,18 +1943,18 @@
     "LB": {
       "name": "Lebanon",
       "raw": {
-        "visitor-outside-canada": "69 days",
+        "visitor-outside-canada": "66 days",
         "supervisa": "25 days",
         "study": "7 weeks",
-        "work": "7 weeks",
+        "work": "6 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "11 months"
       },
-      "visitor-outside-canada": 69,
+      "visitor-outside-canada": 66,
       "supervisa": 25,
       "study": 49,
-      "work": 49,
+      "work": 42,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": 330
@@ -1962,7 +1962,7 @@
     "LS": {
       "name": "Lesotho",
       "raw": {
-        "visitor-outside-canada": "103 days",
+        "visitor-outside-canada": "95 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -1970,7 +1970,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 103,
+      "visitor-outside-canada": 95,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -1981,7 +1981,7 @@
     "LR": {
       "name": "Liberia",
       "raw": {
-        "visitor-outside-canada": "106 days",
+        "visitor-outside-canada": "104 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -1989,7 +1989,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 106,
+      "visitor-outside-canada": 104,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -2000,18 +2000,18 @@
     "LY": {
       "name": "Libya",
       "raw": {
-        "visitor-outside-canada": "35 days",
+        "visitor-outside-canada": "33 days",
         "supervisa": "No processing time available",
         "study": "3 weeks",
-        "work": "No processing time available",
+        "work": "2 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 35,
+      "visitor-outside-canada": 33,
       "supervisa": null,
       "study": 21,
-      "work": null,
+      "work": 14,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": null
@@ -2057,7 +2057,7 @@
     "LU": {
       "name": "Luxembourg",
       "raw": {
-        "visitor-outside-canada": "36 days",
+        "visitor-outside-canada": "37 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -2065,7 +2065,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 36,
+      "visitor-outside-canada": 37,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -2076,7 +2076,7 @@
     "MO": {
       "name": "Macao SAR",
       "raw": {
-        "visitor-outside-canada": "17 days",
+        "visitor-outside-canada": "18 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -2084,7 +2084,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 17,
+      "visitor-outside-canada": 18,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -2095,7 +2095,7 @@
     "MK": {
       "name": "Macedonia",
       "raw": {
-        "visitor-outside-canada": "39 days",
+        "visitor-outside-canada": "41 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -2103,7 +2103,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 39,
+      "visitor-outside-canada": 41,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -2114,18 +2114,18 @@
     "MG": {
       "name": "Madagascar",
       "raw": {
-        "visitor-outside-canada": "149 days",
+        "visitor-outside-canada": "128 days",
         "supervisa": "No processing time available",
         "study": "13 weeks",
-        "work": "41 weeks",
+        "work": "38 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 149,
+      "visitor-outside-canada": 128,
       "supervisa": null,
       "study": 91,
-      "work": 287,
+      "work": 266,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": null
@@ -2133,7 +2133,7 @@
     "MW": {
       "name": "Malawi",
       "raw": {
-        "visitor-outside-canada": "238 days",
+        "visitor-outside-canada": "198 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -2141,7 +2141,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 238,
+      "visitor-outside-canada": 198,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -2155,7 +2155,7 @@
         "visitor-outside-canada": "21 days",
         "supervisa": "No processing time available",
         "study": "6 weeks",
-        "work": "14 weeks",
+        "work": "10 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "17 months"
@@ -2163,7 +2163,7 @@
       "visitor-outside-canada": 21,
       "supervisa": null,
       "study": 42,
-      "work": 98,
+      "work": 70,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": 510
@@ -2190,17 +2190,17 @@
     "ML": {
       "name": "Mali",
       "raw": {
-        "visitor-outside-canada": "74 days",
+        "visitor-outside-canada": "70 days",
         "supervisa": "No processing time available",
-        "study": "5 weeks",
+        "study": "7 weeks",
         "work": "No processing time available",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 74,
+      "visitor-outside-canada": 70,
       "supervisa": null,
-      "study": 35,
+      "study": 49,
       "work": null,
       "child_dependent": null,
       "child_adopted": null,
@@ -2209,7 +2209,7 @@
     "MT": {
       "name": "Malta",
       "raw": {
-        "visitor-outside-canada": "29 days",
+        "visitor-outside-canada": "36 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -2217,7 +2217,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 29,
+      "visitor-outside-canada": 36,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -2266,7 +2266,7 @@
     "MR": {
       "name": "Mauritania",
       "raw": {
-        "visitor-outside-canada": "96 days",
+        "visitor-outside-canada": "92 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -2274,7 +2274,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 96,
+      "visitor-outside-canada": 92,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -2285,17 +2285,17 @@
     "MU": {
       "name": "Mauritius",
       "raw": {
-        "visitor-outside-canada": "147 days",
+        "visitor-outside-canada": "135 days",
         "supervisa": "No processing time available",
-        "study": "12 weeks",
+        "study": "11 weeks",
         "work": "11 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 147,
+      "visitor-outside-canada": 135,
       "supervisa": null,
-      "study": 84,
+      "study": 77,
       "work": 77,
       "child_dependent": null,
       "child_adopted": null,
@@ -2304,7 +2304,7 @@
     "MX": {
       "name": "Mexico",
       "raw": {
-        "visitor-outside-canada": "19 days",
+        "visitor-outside-canada": "16 days",
         "supervisa": "78 days",
         "study": "2 weeks",
         "work": "2 weeks",
@@ -2312,7 +2312,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 19,
+      "visitor-outside-canada": 16,
       "supervisa": 78,
       "study": 14,
       "work": 14,
@@ -2342,7 +2342,7 @@
     "MD": {
       "name": "Moldova",
       "raw": {
-        "visitor-outside-canada": "42 days",
+        "visitor-outside-canada": "47 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "6 weeks",
@@ -2350,7 +2350,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 42,
+      "visitor-outside-canada": 47,
       "supervisa": null,
       "study": null,
       "work": 42,
@@ -2418,7 +2418,7 @@
     "MA": {
       "name": "Morocco",
       "raw": {
-        "visitor-outside-canada": "20 days",
+        "visitor-outside-canada": "22 days",
         "supervisa": "25 days",
         "study": "8 weeks",
         "work": "7 weeks",
@@ -2426,7 +2426,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "15 months"
       },
-      "visitor-outside-canada": 20,
+      "visitor-outside-canada": 22,
       "supervisa": 25,
       "study": 56,
       "work": 49,
@@ -2437,7 +2437,7 @@
     "MZ": {
       "name": "Mozambique",
       "raw": {
-        "visitor-outside-canada": "398 days",
+        "visitor-outside-canada": "418 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -2445,7 +2445,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 398,
+      "visitor-outside-canada": 418,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -2456,7 +2456,7 @@
     "NA": {
       "name": "Namibia",
       "raw": {
-        "visitor-outside-canada": "211 days",
+        "visitor-outside-canada": "219 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -2464,7 +2464,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 211,
+      "visitor-outside-canada": 219,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -2494,18 +2494,18 @@
     "NP": {
       "name": "Nepal",
       "raw": {
-        "visitor-outside-canada": "42 days",
-        "supervisa": "48 days",
+        "visitor-outside-canada": "43 days",
+        "supervisa": "51 days",
         "study": "5 weeks",
-        "work": "9 weeks",
+        "work": "10 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 42,
-      "supervisa": 48,
+      "visitor-outside-canada": 43,
+      "supervisa": 51,
       "study": 35,
-      "work": 63,
+      "work": 70,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": null
@@ -2513,7 +2513,7 @@
     "NL": {
       "name": "Netherlands",
       "raw": {
-        "visitor-outside-canada": "25 days",
+        "visitor-outside-canada": "28 days",
         "supervisa": "No processing time available",
         "study": "4 weeks",
         "work": "No processing time available",
@@ -2521,7 +2521,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 25,
+      "visitor-outside-canada": 28,
       "supervisa": null,
       "study": 28,
       "work": null,
@@ -2551,7 +2551,7 @@
     "NZ": {
       "name": "New Zealand",
       "raw": {
-        "visitor-outside-canada": "7 days",
+        "visitor-outside-canada": "8 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -2559,7 +2559,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 7,
+      "visitor-outside-canada": 8,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -2570,18 +2570,18 @@
     "NI": {
       "name": "Nicaragua",
       "raw": {
-        "visitor-outside-canada": "21 days",
+        "visitor-outside-canada": "22 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
-        "work": "3 weeks",
+        "work": "4 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 21,
+      "visitor-outside-canada": 22,
       "supervisa": null,
       "study": null,
-      "work": 21,
+      "work": 28,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": null
@@ -2589,7 +2589,7 @@
     "NE": {
       "name": "Niger",
       "raw": {
-        "visitor-outside-canada": "76 days",
+        "visitor-outside-canada": "77 days",
         "supervisa": "No processing time available",
         "study": "5 weeks",
         "work": "No processing time available",
@@ -2597,7 +2597,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "22 months"
       },
-      "visitor-outside-canada": 76,
+      "visitor-outside-canada": 77,
       "supervisa": null,
       "study": 35,
       "work": null,
@@ -2608,16 +2608,16 @@
     "NG": {
       "name": "Nigeria",
       "raw": {
-        "visitor-outside-canada": "103 days",
-        "supervisa": "35 days",
+        "visitor-outside-canada": "106 days",
+        "supervisa": "34 days",
         "study": "10 weeks",
         "work": "10 weeks",
         "child_dependent": "22 months",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 103,
-      "supervisa": 35,
+      "visitor-outside-canada": 106,
+      "supervisa": 34,
       "study": 70,
       "work": 70,
       "child_dependent": 660,
@@ -2648,7 +2648,7 @@
       "raw": {
         "visitor-outside-canada": "41 days",
         "supervisa": "No processing time available",
-        "study": "3 weeks",
+        "study": "4 weeks",
         "work": "No processing time available",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
@@ -2656,7 +2656,7 @@
       },
       "visitor-outside-canada": 41,
       "supervisa": null,
-      "study": 21,
+      "study": 28,
       "work": null,
       "child_dependent": null,
       "child_adopted": null,
@@ -2684,17 +2684,17 @@
     "PK": {
       "name": "Pakistan",
       "raw": {
-        "visitor-outside-canada": "65 days",
-        "supervisa": "105 days",
-        "study": "8 weeks",
+        "visitor-outside-canada": "63 days",
+        "supervisa": "104 days",
+        "study": "7 weeks",
         "work": "9 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 65,
-      "supervisa": 105,
-      "study": 56,
+      "visitor-outside-canada": 63,
+      "supervisa": 104,
+      "study": 49,
       "work": 63,
       "child_dependent": null,
       "child_adopted": null,
@@ -2741,7 +2741,7 @@
     "PA": {
       "name": "Panama",
       "raw": {
-        "visitor-outside-canada": "27 days",
+        "visitor-outside-canada": "26 days",
         "supervisa": "No processing time available",
         "study": "6 weeks",
         "work": "No processing time available",
@@ -2749,7 +2749,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 27,
+      "visitor-outside-canada": 26,
       "supervisa": null,
       "study": 42,
       "work": null,
@@ -2779,7 +2779,7 @@
     "PY": {
       "name": "Paraguay",
       "raw": {
-        "visitor-outside-canada": "22 days",
+        "visitor-outside-canada": "21 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -2787,7 +2787,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 22,
+      "visitor-outside-canada": 21,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -2817,18 +2817,18 @@
     "PH": {
       "name": "Philippines",
       "raw": {
-        "visitor-outside-canada": "24 days",
+        "visitor-outside-canada": "25 days",
         "supervisa": "103 days",
         "study": "6 weeks",
-        "work": "8 weeks",
+        "work": "9 weeks",
         "child_dependent": "11 months",
         "child_adopted": "17 months",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 24,
+      "visitor-outside-canada": 25,
       "supervisa": 103,
       "study": 42,
-      "work": 56,
+      "work": 63,
       "child_dependent": 330,
       "child_adopted": 510,
       "refugees_gov": null
@@ -2836,7 +2836,7 @@
     "PL": {
       "name": "Poland",
       "raw": {
-        "visitor-outside-canada": "9 days",
+        "visitor-outside-canada": "11 days",
         "supervisa": "No processing time available",
         "study": "4 weeks",
         "work": "No processing time available",
@@ -2844,7 +2844,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 9,
+      "visitor-outside-canada": 11,
       "supervisa": null,
       "study": 28,
       "work": null,
@@ -2855,7 +2855,7 @@
     "PT": {
       "name": "Portugal",
       "raw": {
-        "visitor-outside-canada": "38 days",
+        "visitor-outside-canada": "37 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -2863,7 +2863,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 38,
+      "visitor-outside-canada": 37,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -2896,7 +2896,7 @@
         "visitor-outside-canada": "61 days",
         "supervisa": "No processing time available",
         "study": "5 weeks",
-        "work": "14 weeks",
+        "work": "11 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
@@ -2904,7 +2904,7 @@
       "visitor-outside-canada": 61,
       "supervisa": null,
       "study": 35,
-      "work": 98,
+      "work": 77,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": null
@@ -2931,18 +2931,18 @@
     "RU": {
       "name": "Russia",
       "raw": {
-        "visitor-outside-canada": "18 days",
-        "supervisa": "74 days",
+        "visitor-outside-canada": "20 days",
+        "supervisa": "No processing time available",
         "study": "4 weeks",
-        "work": "No processing time available",
+        "work": "5 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 18,
-      "supervisa": 74,
+      "visitor-outside-canada": 20,
+      "supervisa": null,
       "study": 28,
-      "work": null,
+      "work": 35,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": null
@@ -2952,7 +2952,7 @@
       "raw": {
         "visitor-outside-canada": "61 days",
         "supervisa": "No processing time available",
-        "study": "5 weeks",
+        "study": "6 weeks",
         "work": "10 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
@@ -2960,7 +2960,7 @@
       },
       "visitor-outside-canada": 61,
       "supervisa": null,
-      "study": 35,
+      "study": 42,
       "work": 70,
       "child_dependent": null,
       "child_adopted": null,
@@ -3045,16 +3045,16 @@
     "SA": {
       "name": "Saudi Arabia",
       "raw": {
-        "visitor-outside-canada": "51 days",
-        "supervisa": "92 days",
+        "visitor-outside-canada": "49 days",
+        "supervisa": "91 days",
         "study": "4 weeks",
         "work": "4 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 51,
-      "supervisa": 92,
+      "visitor-outside-canada": 49,
+      "supervisa": 91,
       "study": 28,
       "work": 28,
       "child_dependent": null,
@@ -3064,18 +3064,18 @@
     "SN": {
       "name": "Senegal",
       "raw": {
-        "visitor-outside-canada": "60 days",
-        "supervisa": "41 days",
+        "visitor-outside-canada": "62 days",
+        "supervisa": "35 days",
         "study": "7 weeks",
-        "work": "12 weeks",
+        "work": "13 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 60,
-      "supervisa": 41,
+      "visitor-outside-canada": 62,
+      "supervisa": 35,
       "study": 49,
-      "work": 84,
+      "work": 91,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": null
@@ -3140,18 +3140,18 @@
     "SG": {
       "name": "Singapore",
       "raw": {
-        "visitor-outside-canada": "20 days",
+        "visitor-outside-canada": "21 days",
         "supervisa": "No processing time available",
-        "study": "15 weeks",
-        "work": "16 weeks",
+        "study": "9 weeks",
+        "work": "9 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 20,
+      "visitor-outside-canada": 21,
       "supervisa": null,
-      "study": 105,
-      "work": 112,
+      "study": 63,
+      "work": 63,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": null
@@ -3159,7 +3159,7 @@
     "SK": {
       "name": "Slovakia",
       "raw": {
-        "visitor-outside-canada": "29 days",
+        "visitor-outside-canada": "22 days",
         "supervisa": "No processing time available",
         "study": "3 weeks",
         "work": "No processing time available",
@@ -3167,7 +3167,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 29,
+      "visitor-outside-canada": 22,
       "supervisa": null,
       "study": 21,
       "work": null,
@@ -3216,7 +3216,7 @@
     "SO": {
       "name": "Somalia",
       "raw": {
-        "visitor-outside-canada": "119 days",
+        "visitor-outside-canada": "121 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -3224,7 +3224,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 119,
+      "visitor-outside-canada": 121,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -3235,18 +3235,18 @@
     "ZA": {
       "name": "South Africa",
       "raw": {
-        "visitor-outside-canada": "185 days",
+        "visitor-outside-canada": "178 days",
         "supervisa": "No processing time available",
         "study": "19 weeks",
-        "work": "17 weeks",
+        "work": "16 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 185,
+      "visitor-outside-canada": 178,
       "supervisa": null,
       "study": 133,
-      "work": 119,
+      "work": 112,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": null
@@ -3256,7 +3256,7 @@
       "raw": {
         "visitor-outside-canada": "56 days",
         "supervisa": "No processing time available",
-        "study": "3 weeks",
+        "study": "2 weeks",
         "work": "7 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
@@ -3264,7 +3264,7 @@
       },
       "visitor-outside-canada": 56,
       "supervisa": null,
-      "study": 21,
+      "study": 14,
       "work": 49,
       "child_dependent": null,
       "child_adopted": null,
@@ -3311,18 +3311,18 @@
     "LK": {
       "name": "Sri Lanka",
       "raw": {
-        "visitor-outside-canada": "44 days",
+        "visitor-outside-canada": "41 days",
         "supervisa": "40 days",
-        "study": "5 weeks",
-        "work": "8 weeks",
+        "study": "6 weeks",
+        "work": "9 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 44,
+      "visitor-outside-canada": 41,
       "supervisa": 40,
-      "study": 35,
-      "work": 56,
+      "study": 42,
+      "work": 63,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": null
@@ -3330,7 +3330,7 @@
     "KN": {
       "name": "St. Kitts and Nevis",
       "raw": {
-        "visitor-outside-canada": "21 days",
+        "visitor-outside-canada": "25 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -3338,7 +3338,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 21,
+      "visitor-outside-canada": 25,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -3406,7 +3406,7 @@
     "SZ": {
       "name": "Eswatini",
       "raw": {
-        "visitor-outside-canada": "158 days",
+        "visitor-outside-canada": "804 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -3414,7 +3414,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 158,
+      "visitor-outside-canada": 804,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -3425,7 +3425,7 @@
     "SE": {
       "name": "Sweden",
       "raw": {
-        "visitor-outside-canada": "41 days",
+        "visitor-outside-canada": "40 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -3433,7 +3433,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 41,
+      "visitor-outside-canada": 40,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -3444,7 +3444,7 @@
     "CH": {
       "name": "Switzerland",
       "raw": {
-        "visitor-outside-canada": "39 days",
+        "visitor-outside-canada": "38 days",
         "supervisa": "No processing time available",
         "study": "3 weeks",
         "work": "No processing time available",
@@ -3452,7 +3452,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 39,
+      "visitor-outside-canada": 38,
       "supervisa": null,
       "study": 21,
       "work": null,
@@ -3463,7 +3463,7 @@
     "SY": {
       "name": "Syria",
       "raw": {
-        "visitor-outside-canada": "92 days",
+        "visitor-outside-canada": "89 days",
         "supervisa": "652 days",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -3471,7 +3471,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 92,
+      "visitor-outside-canada": 89,
       "supervisa": 652,
       "study": null,
       "work": null,
@@ -3541,7 +3541,7 @@
       "raw": {
         "visitor-outside-canada": "63 days",
         "supervisa": "No processing time available",
-        "study": "7 weeks",
+        "study": "9 weeks",
         "work": "No processing time available",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
@@ -3549,7 +3549,7 @@
       },
       "visitor-outside-canada": 63,
       "supervisa": null,
-      "study": 49,
+      "study": 63,
       "work": null,
       "child_dependent": null,
       "child_adopted": null,
@@ -3558,18 +3558,18 @@
     "TH": {
       "name": "Thailand",
       "raw": {
-        "visitor-outside-canada": "42 days",
+        "visitor-outside-canada": "41 days",
         "supervisa": "No processing time available",
         "study": "6 weeks",
-        "work": "12 weeks",
+        "work": "10 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "7 months"
       },
-      "visitor-outside-canada": 42,
+      "visitor-outside-canada": 41,
       "supervisa": null,
       "study": 42,
-      "work": 84,
+      "work": 70,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": 210
@@ -3596,7 +3596,7 @@
     "TG": {
       "name": "Togo",
       "raw": {
-        "visitor-outside-canada": "95 days",
+        "visitor-outside-canada": "48 days",
         "supervisa": "No processing time available",
         "study": "16 weeks",
         "work": "No processing time available",
@@ -3604,7 +3604,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 95,
+      "visitor-outside-canada": 48,
       "supervisa": null,
       "study": 112,
       "work": null,
@@ -3634,7 +3634,7 @@
     "TT": {
       "name": "Trinidad and Tobago",
       "raw": {
-        "visitor-outside-canada": "16 days",
+        "visitor-outside-canada": "17 days",
         "supervisa": "No processing time available",
         "study": "6 weeks",
         "work": "3 weeks",
@@ -3642,7 +3642,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 16,
+      "visitor-outside-canada": 17,
       "supervisa": null,
       "study": 42,
       "work": 21,
@@ -3654,7 +3654,7 @@
       "name": "Tunisia",
       "raw": {
         "visitor-outside-canada": "36 days",
-        "supervisa": "18 days",
+        "supervisa": "19 days",
         "study": "4 weeks",
         "work": "4 weeks",
         "child_dependent": "No processing time available",
@@ -3662,7 +3662,7 @@
         "refugees_gov": "Not enough data"
       },
       "visitor-outside-canada": 36,
-      "supervisa": 18,
+      "supervisa": 19,
       "study": 28,
       "work": 28,
       "child_dependent": null,
@@ -3673,17 +3673,17 @@
       "name": "Türkiye",
       "raw": {
         "visitor-outside-canada": "76 days",
-        "supervisa": "69 days",
-        "study": "5 weeks",
-        "work": "12 weeks",
+        "supervisa": "81 days",
+        "study": "6 weeks",
+        "work": "10 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "13 months"
       },
       "visitor-outside-canada": 76,
-      "supervisa": 69,
-      "study": 35,
-      "work": 84,
+      "supervisa": 81,
+      "study": 42,
+      "work": 70,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": 390
@@ -3710,7 +3710,7 @@
     "TC": {
       "name": "Turks and Caicos Islands",
       "raw": {
-        "visitor-outside-canada": "28 days",
+        "visitor-outside-canada": "35 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -3718,7 +3718,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 28,
+      "visitor-outside-canada": 35,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -3767,16 +3767,16 @@
     "UA": {
       "name": "Ukraine",
       "raw": {
-        "visitor-outside-canada": "13 days",
-        "supervisa": "71 days",
+        "visitor-outside-canada": "22 days",
+        "supervisa": "No processing time available",
         "study": "7 weeks",
         "work": "No processing time available",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 13,
-      "supervisa": 71,
+      "visitor-outside-canada": 22,
+      "supervisa": null,
       "study": 49,
       "work": null,
       "child_dependent": null,
@@ -3786,18 +3786,18 @@
     "AE": {
       "name": "United Arab Emirates",
       "raw": {
-        "visitor-outside-canada": "55 days",
-        "supervisa": "64 days",
+        "visitor-outside-canada": "56 days",
+        "supervisa": "72 days",
         "study": "7 weeks",
-        "work": "12 weeks",
+        "work": "7 weeks",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 55,
-      "supervisa": 64,
+      "visitor-outside-canada": 56,
+      "supervisa": 72,
       "study": 49,
-      "work": 84,
+      "work": 49,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": null
@@ -3805,7 +3805,7 @@
     "GB": {
       "name": "United Kingdom",
       "raw": {
-        "visitor-outside-canada": "23 days",
+        "visitor-outside-canada": "24 days",
         "supervisa": "97 days",
         "study": "5 weeks",
         "work": "4 weeks",
@@ -3813,7 +3813,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 23,
+      "visitor-outside-canada": 24,
       "supervisa": 97,
       "study": 35,
       "work": 28,
@@ -3825,7 +3825,7 @@
       "name": "United States of America",
       "raw": {
         "visitor-outside-canada": "18 days",
-        "supervisa": "68 days",
+        "supervisa": "75 days",
         "study": "5 weeks",
         "work": "6 weeks",
         "child_dependent": "No processing time available",
@@ -3833,7 +3833,7 @@
         "refugees_gov": "Not enough data"
       },
       "visitor-outside-canada": 18,
-      "supervisa": 68,
+      "supervisa": 75,
       "study": 35,
       "work": 42,
       "child_dependent": null,
@@ -3843,7 +3843,7 @@
     "UY": {
       "name": "Uruguay",
       "raw": {
-        "visitor-outside-canada": "21 days",
+        "visitor-outside-canada": "17 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -3851,7 +3851,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 21,
+      "visitor-outside-canada": 17,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -3883,7 +3883,7 @@
       "raw": {
         "visitor-outside-canada": "16 days",
         "supervisa": "No processing time available",
-        "study": "5 weeks",
+        "study": "4 weeks",
         "work": "No processing time available",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
@@ -3891,7 +3891,7 @@
       },
       "visitor-outside-canada": 16,
       "supervisa": null,
-      "study": 35,
+      "study": 28,
       "work": null,
       "child_dependent": null,
       "child_adopted": null,
@@ -3919,7 +3919,7 @@
     "VE": {
       "name": "Venezuela",
       "raw": {
-        "visitor-outside-canada": "33 days",
+        "visitor-outside-canada": "32 days",
         "supervisa": "No processing time available",
         "study": "No processing time available",
         "work": "No processing time available",
@@ -3927,7 +3927,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 33,
+      "visitor-outside-canada": 32,
       "supervisa": null,
       "study": null,
       "work": null,
@@ -3939,7 +3939,7 @@
       "name": "Vietnam",
       "raw": {
         "visitor-outside-canada": "40 days",
-        "supervisa": "44 days",
+        "supervisa": "46 days",
         "study": "5 weeks",
         "work": "5 weeks",
         "child_dependent": "No processing time available",
@@ -3947,7 +3947,7 @@
         "refugees_gov": "Not enough data"
       },
       "visitor-outside-canada": 40,
-      "supervisa": 44,
+      "supervisa": 46,
       "study": 35,
       "work": 35,
       "child_dependent": null,
@@ -3976,7 +3976,7 @@
     "ZM": {
       "name": "Zambia",
       "raw": {
-        "visitor-outside-canada": "332 days",
+        "visitor-outside-canada": "336 days",
         "supervisa": "No processing time available",
         "study": "12 weeks",
         "work": "No processing time available",
@@ -3984,7 +3984,7 @@
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 332,
+      "visitor-outside-canada": 336,
       "supervisa": null,
       "study": 84,
       "work": null,
@@ -3995,18 +3995,18 @@
     "ZW": {
       "name": "Zimbabwe",
       "raw": {
-        "visitor-outside-canada": "182 days",
+        "visitor-outside-canada": "195 days",
         "supervisa": "No processing time available",
         "study": "15 weeks",
-        "work": "42 weeks",
+        "work": "No processing time available",
         "child_dependent": "No processing time available",
         "child_adopted": "Not enough data",
         "refugees_gov": "Not enough data"
       },
-      "visitor-outside-canada": 182,
+      "visitor-outside-canada": 195,
       "supervisa": null,
       "study": 105,
-      "work": 294,
+      "work": null,
       "child_dependent": null,
       "child_adopted": null,
       "refugees_gov": null
@@ -4016,14 +4016,14 @@
       "raw": {
         "supervisa": "No processing time available",
         "study": "7 weeks",
-        "work": "15 weeks",
+        "work": "16 weeks",
         "child_dependent": "17 months",
         "child_adopted": "23 months",
         "refugees_gov": "Not enough data"
       },
       "supervisa": null,
       "study": 49,
-      "work": 105,
+      "work": 112,
       "child_dependent": 510,
       "child_adopted": 690,
       "refugees_gov": null
