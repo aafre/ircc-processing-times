@@ -64,7 +64,7 @@
     }
   },
   "scripts": {
-    "dev": "npx vite build --config vite.config.server.ts --watch",
-    "build": "npx vite build --config vite.config.server.ts"
+    "dev": "npx vite build --config vite.config.client.ts && npx vite build --config vite.config.server.ts --watch",
+    "build": "npx vite build --config vite.config.server.ts && npx vite build --config vite.config.client.ts"
   }
 }

@@ -32,5 +32,9 @@ node_modules/
 website/dist/
 website/.astro/
 
+# Devvit build output
+devvit-app/dist/
+devvit-app/webroot/client.js
+
 # Environment
 .env
