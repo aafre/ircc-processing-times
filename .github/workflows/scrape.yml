@@ -30,7 +30,15 @@ jobs:
         run: python -m src.scrape
 
       - name: Commit updated data
+        id: commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "data: update processing times ${{ github.event.schedule && '(scheduled)' || '(manual)' }}"
           file_pattern: "scraper/data/* scraper/processing_times.db"
+
+      - name: Trigger Cloudflare Pages rebuild
+        if: steps.commit.outputs.changes_detected == 'true'
+        env:
+          HOOK: ${{ secrets.CF_PAGES_DEPLOY_HOOK }}
+        run: |
+          if [ -n "$HOOK" ]; then curl -fsS -X POST "$HOOK" > /dev/null; else echo "CF_PAGES_DEPLOY_HOOK not set; skipping"; fi
