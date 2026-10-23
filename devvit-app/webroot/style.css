@@ -288,6 +288,20 @@ body {
   flex-shrink: 0;
 }
 
+.row-link {
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  position: relative;
+}
+
 .c-fast { color: var(--fast); }
 .c-mod { color: var(--moderate); }
 .c-slow { color: var(--slow); }

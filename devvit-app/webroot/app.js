@@ -103,12 +103,18 @@ function render() {
         '<span class="row-name">' + (c.name || code) + '</span>' +
         '<span class="row-days ' + speedClass(d) + '">' + d + '</span>' +
         '<span class="row-unit">d</span>' +
+        '<button class="row-link" data-code="' + code + '">Full history ↗</button>' +
       '</li>';
     }).join('');
   }
 
   document.getElementById('footer-count').textContent = entries.length + ' countries';
 }
+
+document.getElementById('list').addEventListener('click', function(e) {
+  var b = e.target.closest('.row-link');
+  if (b) openCountryPage(data.processing_times[b.dataset.code].name || b.dataset.code);
+});
 
 document.getElementById('search').addEventListener('input', function(e) {
   searchQuery = e.target.value;
