@@ -1,8 +1,8 @@
 # IRCC Processing Times Tracker
 
-Open-source dataset of Canada visa processing times, scraped daily from [IRCC](https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html) and served as structured JSON.
+Free dataset of Canada visa processing times, scraped daily from [IRCC](https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html) and served as structured JSON.
 
-**Built for [r/CanadaVisitorVisa](https://www.reddit.com/r/CanadaVisitorVisa/)** — a community helping people navigate the Canadian visitor visa process.
+**Built for [r/CanadaVisitorVisa](https://www.reddit.com/r/CanadaVisitorVisa/)** — a community helping people navigate the Canadian visitor visa process. The data powers [canadavisatracker.com](https://canadavisatracker.com).
 
 ## What's in the data
 
@@ -100,6 +100,8 @@ devvit-app/        Reddit Devvit app for r/CanadaVisitorVisa
 
 All processing time data is sourced from **Immigration, Refugees and Citizenship Canada (IRCC)** via their official [Check processing times](https://www.canada.ca/en/immigration-refugees-citizenship/services/application/check-processing-times.html) page. This project is not affiliated with or endorsed by IRCC or the Government of Canada.
 
+Processing time figures © Government of Canada (IRCC), reproduced for non-commercial use under the canada.ca Terms.
+
 ## License
 
-MIT
+Code: MIT, see [LICENSE](LICENSE). The data notice above applies to the figures in `scraper/data/`.
