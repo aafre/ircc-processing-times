@@ -8,6 +8,7 @@ on:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     permissions:
       contents: write
@@ -23,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install httpx playwright
-          playwright install chromium --with-deps
+          playwright install chromium  # runner image already has the browser libs; --with-deps apt-installs from a mirror that has taken 10+ min
 
       - name: Run scraper
         working-directory: scraper
